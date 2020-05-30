@@ -25,3 +25,14 @@
     padding: 50px 0px 0px 0px;
     z-index: 0;
   }
+  .modal-header {
+    background-color:  #169DB2;
+    color: floralwhite;
+  }
+  .modal {
+    border: #169DB2;
+  }
+
+.modal-body {
+    color:  #169DB2;
+}
