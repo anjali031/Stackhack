@@ -36,3 +36,11 @@
 .modal-body {
     color:  #169DB2;
 }
+.card-header {
+  background-color:  #169DB2;
+  color: floralwhite;
+}
+.card-content {
+  background-color:floralwhite ;
+  color: #169DB2;
+}
