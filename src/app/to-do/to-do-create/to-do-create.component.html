@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="col-12">
+            <div class="card border-info " >
+                <div class="card-header bg-info mb-4">Update</div>
+                <div class="card-body text-info">
+                    <form #update="ngForm" (ngSubmit)="OnSubmit(update)">
+                        <div class="form-group">
+                          <label for="Title">Title</label>
+                          <input id="Title" type="text" class="form-control " name="Title" #Title="ngModel" [(ngModel)]="todo.Title" required >
+                        </div>
+                        <div class="form-group">
+                            <label for="Description"> Description</label>
+                            <input id="Description" class=" form-control " type="text" name="Description" #Description="ngModel" [(ngModel)]="todo.Description" required  >
+                        </div>                   
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            <input id="Status" class=" form-control " type="text" name="Status" #Status="ngModel" [(ngModel)]="todo.Status" required>
+                          </div>                        
+                        <div class="form-group">
+                            <label for="Color">Color</label>
+                            <input id="Color" type="text" class="form-control " name="Color" #Color="ngModel" [(ngModel)]="todo.Color" required>
+                          </div>
+                        <div class="form-group">
+                            <label for="Priority">Priority</label>
+                            <input id="Priority" type="password" class="form-control" name="Priority" #Priority="ngModel" [(ngModel)]="todo.Priority"  required>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit"  class="btn btn-info  btn-submit center-block" type="submit">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>        
+    </div>
+</div>

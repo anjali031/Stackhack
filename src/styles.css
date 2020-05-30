@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+.navbar-dark {
+    background-color: #169DB2;
+  }
+  .row-header {
+    margin: 0px auto;
+    padding: 0px 0px;
+  }
+  .row-content {
+    margin: 0px auto;
+    padding: 50px 0px;
+    border-bottom: 1px ridge;
+    min-height: 400px;
+  }
+  .footer {
+    margin: 0px auto;
+    padding: 20px 0px;
+  }
+  header.jumbotron {
+    margin: 0px auto;
+    padding: 70px 30px;
+    color: floralwhite;
+  }
+  body {
+    padding: 50px 0px 0px 0px;
+    z-index: 0;
+  }

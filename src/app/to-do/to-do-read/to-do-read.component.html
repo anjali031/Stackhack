@@ -1,0 +1,328 @@
+<nav class="navbar navbar-dark navbar-expand-sm  fixed-top">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="#" class="navbar-brand mr-auto">To Do List</a>
+        <div class="collapse navbar-collapse" id="Navbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item " *ngIf="token == true"><a (click)="Logout()" class="nav-link" href="#" style="cursor: pointer;"><span class="fa fa-sign-out"  ></span> Logout</a></li>
+                <li class="nav-item" *ngIf="token == false"><a data-toggle="modal" data-target="#todoLogin" class="nav-link"><span class="fa fa-sign-in"></span> Login</a></li>
+                <li class="nav-item" *ngIf="token == false"><a  class="nav-link" data-toggle="modal" data-target="#todoRegistrationForm"><span class="fa fa-user"></span> SignUp</a></li>
+                <li class="nav-item"><a data-toggle="modal" data-target="#todoCreateModal" class="nav-link" ><span class="fa fa-plus"></span> Add Todos </a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!--div class="row row-content" *ngIf="token == true">
+    <div class="col-12">
+        <h2>Your todos</h2>
+
+        <div id="accordion">
+            <div class="card" *ngFor="let a of data.data; let i = index">
+                <div class="card-header" role="tab" id="peterhead">
+                <h3 class="mb-0">
+                    <a data-toggle="collapse" data-target=#{{a.Title}}>
+                    {{a.Title}} <small></small>
+                    </a>
+                </h3>
+                </div>
+                <div class="collapse" id={{a.Title}} data-parent="#accordion">
+                    <div class="card-body">
+                        <p>{{a.Color}}</p>
+                        <span class="navbar-text"  (click)="use(i)"  >
+                            <a data-toggle="modal" data-target="#todoUpdateModal">
+                            <span class="fa fa-sign-in"></span> Update</a>
+                        </span>
+                        <p>{{a.Created_at}}</p>
+                        <p>{{a.Description}}</p>
+                        <p>{{a.Priority}}</p>
+                        <p>{{a.Status}}</p>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div -->
+
+<div class="container col-12" >
+    <div class="row">
+      <div class="container">
+        <div class="row">
+            <div class="col-9 col-sm-9">
+              <h3>Your Todos</h3>
+
+            </div>
+            <div class="col-3 col-sm-3 col-md-2 ml-auto">
+              <button class="btn btn-info center-block" style="margin-right: 0px;" data-toggle="modal" data-target="#todoCreateModal"><span class="fa fa-plus"></span> Add Todos</button>            
+            </div>
+        </div>
+      </div>
+    </div>
+    <h3><hr><hr></h3>
+    <div class="col-12 " *ngIf="token == false">
+    <header class="jumbotron bg-info">
+        <div class="container ">
+            <div class="row row-header ">
+                <div class="col-12 col-sm-6">
+                    <h1>Todo Management</h1>
+                    <p>Create your todos here to stay productive at your mundane taskd and get reminded of them on time </p>
+                </div>
+                <!--div class="col-12 col-sm align-self-center">
+                    <img src="./img/logo.png" alt="" srcset="" class="img-fluid">
+                </div-->
+                <div class ="col-12 col-sm-6 align-self-center">
+                    <!--a role="button" class="btn btn-block nav-link btn-warning"
+                        data-toggle="tooltip" data-html="true"  title="Or Call us at  <br><strong>+852 12345678</strong>"
+                        data-placement="bottom" href="#reserveform">Reserve Table</a--> 
+                    <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="modal" data-target="#todoLogin">Login</a> 
+                    <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="modal" data-target="#todoRegistrationForm">Register</a> 
+
+               </div>
+
+            </div>
+        </div>
+    </header>
+    </div>
+    <div class="container" *ngIf="token == true">
+    <div class="card"  *ngFor="let a of data.data; let i = index" >
+        <div class="card-header">
+            <div class="card-title" >
+                <p>{{a.Title}}</p>
+            </div>
+        </div>
+        <div class="card-content">
+            <p>{{a.Color}}</p>
+            <span class="navbar-text"  (click)="use(i)"  >
+                <a data-toggle="modal" data-target="#todoUpdateModal">
+                <span class="fa fa-sign-in"></span> Update</a>
+            </span>
+            <p>{{a.Created_at}}</p>
+            <p>{{a.Description}}</p>
+            <p>{{a.Priority}}</p>
+            <p>{{a.Status}}</p>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div id="todoUpdateModal" class="modal fade" role="dialog">
+    <div class="modal-dialog " role="content">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">To-Do Update </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form  *ngIf="token == true" #todoUpdateForm="ngForm" (ngSubmit)="OnSubmit(todoUpdateForm)">
+                    <div class="form-group">
+                      <label for="Title">Title</label>
+                      <input id="Title" type="text" class="form-control " name="Title" #Title="ngModel" [(ngModel)]="todo.Title" required >
+                    </div>
+                    <div class="form-group">
+                        <label for="Description"> Description</label>
+                        <textarea id="Description" rows="5" class=" form-control " type="text" name="Description" #Description="ngModel" [(ngModel)]="todo.Description" required  ></textarea>
+                    </div>                  
+                    <div class="form-group">
+                        <label for="">Status as</label>
+                        <select class="mdb-select md-form form-control" id="Status" name="Status" #Status="ngModel" [(ngModel)]="todo.Status" required>
+                            <option value="" disabled selected>Set  Status As</option>
+                            <option value="1">Start</option>
+                            <option value="3">OnGoing</option>
+                            <option value="2">Done</option>
+                        </select>
+                      </div>                        
+                    <div class="form-group">
+                        <label for="">Color As</label>
+                        <select class="mdb-select md-form form-control" id="Color" name="Color" #Color="ngModel" [(ngModel)]="todo.Color" required>
+                            <option value="" disabled selected>Set  Color As</option>
+                            <option value="1">Red</option>
+                            <option value="2">Blue</option>
+                            <option value="3">Green</option>
+                            <option value="4">Violet</option>
+                            <option value="5">Orange</option>
+                        </select>
+                      </div>
+                    <div class="form-group">
+                        <label>Label as</label>
+                        <select class="mdb-select md-form form-control" id="Priority"  name="label" #label="ngModel" [(ngModel)]="todo.label"  required>
+                            <option value="" disabled selected>Set Label As</option>
+                            <option value="1">High</option>
+                            <option value="3">Medium</option>
+                            <option value="2">Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-info  btn-submit center-block" type="submit" ><span class="fa fa-pencil-square-o"></span> Update my Todo</button>
+                        <button type="button" class="btn btn-secondary btn-sm ml-5 " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="todoCreateModal"  class="modal fade" role="dialog">
+    <div class="modal-dialog " role="content">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">To-Do Create </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="container" *ngIf="token == false">
+                    <div class="row row-content">
+                        <h4>Seems Like You arent logged in</h4>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-info center-block" data-toggle="modal" data-target="#todoLogin" data-dismiss="modal"><span class="fa fa-sign-in"></span> Login</button>
+                        <button type="button" class="btn btn-info  center-block" data-toggle="modal" data-target="#todoRegistrationForm" data-dismiss="modal" ><span class="fa fa-user"></span> Register</button>
+                    </div>
+
+                </div>
+
+                <form *ngIf="token == true" #todoCreateForm="ngForm" (ngSubmit)="OnSubmit1(todoCreateForm)">
+                    <div class="form-group">
+                      <label for="Title">Title</label>
+                      <input id="Title" type="text" class="form-control " name="Title" #Title="ngModel" [(ngModel)]="todonew.Title" required >
+                    </div>
+                    <div class="form-group">
+                        <label for="Description"> Description</label>
+                        <textarea id="Description" class=" form-control " row="4" type="text" name="Description" #Description="ngModel" [(ngModel)]="todonew.Description" required  ></textarea>
+                    </div>                   
+                    <div class="form-group">
+                        <label for="">Status as</label>
+                        <select class="mdb-select md-form form-control"  name="Status" #Status="ngModel" [(ngModel)]="todonew.Status" required>
+                            <option value="" disabled selected>Set  Status As</option>
+                            <option value="1">Start</option>
+                            <option value="3">OnGoing</option>
+                            <option value="2">Done</option>
+                        </select>
+                      </div>                        
+                    <div class="form-group">
+                        <label for="">Color As</label>
+                        <select class="mdb-select md-form form-control"  name="Color" #Color="ngModel" [(ngModel)]="todonew.Color" required>
+                            <option value="" disabled selected>Set  Color As</option>
+                            <option value="1">Red</option>
+                            <option value="2">Blue</option>
+                            <option value="3">Green</option>
+                            <option value="4">Violet</option>
+                            <option value="5">Orange</option>
+                        </select>
+                      </div>
+                    <div class="form-group">
+                        <label>Label as</label>
+                        <select class="mdb-select md-form form-control"  name="label" #label="ngModel" [(ngModel)]="todonew.label"  required>
+                            <option value="" disabled selected>Set Label As</option>
+                            <option value="1">High</option>
+                            <option value="3">Medium</option>
+                            <option value="2">Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="button" class="btn btn-secondary center-block  " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
+                        <button type="submit"  class="btn btn-info  btn-submit center-block" type="submit"><span class="fa fa-plus"></span> Create a To-Do</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="todoLogin"  class="modal fade" role="dialog">
+    <div class="modal-dialog" role="content">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">To-Do login </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning" *ngIf= "Loginerror.response == 'Error' ">
+                    <strong>Warning!</strong> {{Loginerror.error_message}}
+                </div>
+                <form *ngIf="token == false"  [class]="condition == true ? 'was-validated' : 'needs-validation'" novalidate #loginForm="ngForm" (ngSubmit)="OnSubmit2(username.value,password.value)">
+                    <div class="form-group">
+                        <label for="username1"><i class="fa fa-user-o" aria-hidden="true"></i>  Username</label>
+                        <input id="username1" type="text" class="form-control"  #username ngModel name="username" placeholder="username" [pattern]="userpattern"required >
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">Use lowercase or use Correct username .</div>                    
+                    </div>
+                             
+                    <div class="form-group">
+                        <label for="password1"><i class="fa fa-key" aria-hidden="true"></i>  Password</label>
+                        <input id="password1" type="password" class="form-control" #password ngModel name="password" placeholder="Password" [pattern]="passwordPattern" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Combination of Lowercases Uppercases and Numbers.</div>                    
+                    </div>
+                      <div class="form-group text-center">
+                        <button type="button" class="btn btn-secondary center-block  ml-5 " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
+                        <button type="submit" class="btn btn-submit btn-info center-block" type="submit"><span class="fa fa-sign-in"></span> Login</button>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="todoRegistrationForm"  class="modal fade" role="dialog">
+    <div class="modal-dialog " role="content">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">To-Do login </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning" *ngIf= "passwordMatch == 'Unmatched' ">
+                    <strong>Warning!</strong> Password do not match 
+                </div>
+                <div class="alert alert-warning" *ngIf= "signuperror.response == '401' ">
+                    <strong>Warning!</strong> A user with that username already exists
+                </div>
+                <div class="alert alert-warning" *ngIf= "signuperror.response == '403' ">
+                    <strong>Warning!</strong>{{signuperror.error_message}} 
+                </div>
+                 <div class="alert alert-success"  *ngIf= "signupSuccess.response == '201' ">
+                    <strong>Success !</strong>{{signupSuccess.error_message}} Proceed to Login .                  
+                    <button type="button" data-toggle="modal" data-target="#todoLogin" data-dismiss="modal" class="btn btn-success btn-sm ml-5 " >Login</button>
+                </div>
+                <form *ngIf="token == false" [class]="condition1 == true ? 'was-validated' : 'needs-validation'" novalidate #todoRegistrationForm="ngForm" (ngSubmit)="OnSubmit0(todoRegistrationForm)">
+                    <div class="form-group">
+                      <label for="email"><i class="fa fa-envelope-o" aria-hidden="true"></i>  Email</label>
+                      <input id="email" type="text" class="form-control" name="email" #email="ngModel" [(ngModel)]="user.email" [pattern]="emailPattern" placeholder="Enter Email" required >
+                      <div class="valid-feedback"></div>
+                      <div class="invalid-feedback">Invalid Email</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username"><i class="fa fa-user-o" aria-hidden="true"></i>  Username</label>
+                        <input id="username" class=" form-control " type="text" name="username" #username="ngModel" [(ngModel)]="user.username" placeholder="Enter Username" required [pattern]="userpattern" >
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field .</div>
+                      </div>                      
+                    <div class="form-group">
+                        <label for="password"><i class="fa fa-key" aria-hidden="true"></i>  Password</label>
+                        <input id="password" type="password" class="form-control " name="password" #password="ngModel" [(ngModel)]="user.password" [pattern]="passwordPattern" required placeholder="Password">
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">Combination of lowercase uppercase and numbers .</div>                          
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password"><i class="fa fa-key" aria-hidden="true"></i>  Confirm Password</label>
+                        <input id="confirm_password" type="password" class="form-control" name="confirm_password" #confirm_password="ngModel" [(ngModel)]="user.confirm_password" [pattern]="passwordPattern" required placeholder="Confirm Password">
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Combination of lowercase uppercase and numbers .</div>                          
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="button" class="btn btn-secondary  center-block ml-5 " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
+                        <button  class="btn btn-info  btn-submit center-block" type="submit"><span class="fa fa-user"></span> Register</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
