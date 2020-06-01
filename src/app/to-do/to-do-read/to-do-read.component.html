@@ -34,7 +34,7 @@
     </div>
     <h3><hr><hr></h3>
     <div class="col-12 " *ngIf="token == false">
-    <header class="jumbotron bg-info">
+    <header class="jumbotron bg-info align-self-center" style="max-width: 1111px; ">
         <div class="container ">
             <div class="row row-header ">
                 <div class="col-12 col-sm-6">
@@ -104,12 +104,18 @@
           </div>
         </div>
         <div class="card-content" >
-            <p>{{a.Description}}</p>
-            <p >{{a.Color}}</p>
 
-            <div class="row" style="margin: 0px 15px 0px 15px;">
-                <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;" >{{a.label}}</p>
-                <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;">{{a.Status}}</p>
+            <div class="row" style="margin: 15px 15px 15px 15px;">
+                <div class="col-sm-7 col-lg-9 col-md-8">
+                    <p>{{a.Description}}</p>
+                </div>
+                <div class="col-sm-5 col-lg-3 col-md-4">
+                  <div class="row ">
+                    <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;" >{{a.label}}</p>
+                    <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;">{{a.Status}}</p>
+
+                  </div>
+                </div>
             </div>
 
         </div>
@@ -173,9 +179,8 @@
                         <input id="DueDate" type="datetime-local" class="form-control " name="DueDate" #DueDate="ngModel" [(ngModel)]="todo.DueDate" required >
                       </div>
                     <div class="form-group text-center">
+                        <button type="button" class="btn btn-secondary btn-sm mr-5 " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
                         <button class="btn btn-info  btn-submit center-block" type="submit" ><span class="fa fa-pencil-square-o"></span> Update my Todo</button>
-                        <button type="button" class="btn btn-secondary btn-sm ml-5 " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
-
                     </div>
                 </form>
             </div>
@@ -196,7 +201,7 @@
                         <h4>Seems Like You arent Logged in</h4>
                     </div>
                     <div class="text-center">
-                        <button type="button" class="btn btn-info center-block" data-toggle="modal" data-target="#todoLogin" data-dismiss="modal"><span class="fa fa-sign-in"></span> Login</button>
+                        <button type="button" class="btn btn-info center-block mr-5" data-toggle="modal" data-target="#todoLogin" data-dismiss="modal"><span class="fa fa-sign-in"></span> Login</button>
                         <button type="button" class="btn btn-info  center-block" data-toggle="modal" data-target="#todoRegistrationForm" data-dismiss="modal" ><span class="fa fa-user"></span> Sign-Up</button>
                     </div>
 
@@ -249,7 +254,7 @@
                         <input id="DueDate" type="datetime-local" class="form-control " name="DueDate" #DueDate="ngModel" [(ngModel)]="todo.DueDate" required >
                       </div>
                     <div class="form-group text-center">
-                        <button type="button" class="btn btn-secondary center-block  " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
+                        <button type="button" class="btn btn-secondary center-block mr-5 " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
                         <button type="submit"  class="btn btn-info  btn-submit center-block" type="submit"><span class="fa fa-plus"></span> Create a To-Do</button>
                     </div>
                 </form>
@@ -275,7 +280,7 @@
                         <label for="username1"><i class="fa fa-user-o" aria-hidden="true"></i>  Username</label>
                         <input id="username1" type="text" class="form-control"  #username ngModel name="username" placeholder="username" [pattern]="userpattern"required >
                         <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Use lowercase or use Correct username .</div>                    
+                        <div class="invalid-feedback">Use lowercase .</div>                    
                     </div>
                              
                     <div class="form-group">
@@ -285,7 +290,7 @@
                         <div class="invalid-feedback">Please fill out this field .</div>                    
                     </div>
                       <div class="form-group text-center">
-                        <button type="button" class="btn btn-secondary center-block  ml-5 " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
+                        <button type="button" class="btn btn-secondary center-block  mr-5 " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
                         <button type="submit" class="btn btn-submit btn-info center-block" type="submit"><span class="fa fa-sign-in"></span> Login</button>
                       </div>
                 </form>
@@ -341,7 +346,7 @@
                         <div class="invalid-feedback">Please fill out this field .</div>                          
                     </div>
                     <div class="form-group text-center">
-                        <button type="button" class="btn btn-secondary  center-block ml-5 " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
+                        <button type="button" class="btn btn-secondary  center-block mr-5 " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
                         <button  class="btn btn-info  btn-submit center-block" type="submit"><span class="fa fa-user"></span> Sign-Up</button>
                     </div>
 

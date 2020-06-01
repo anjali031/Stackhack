@@ -63,6 +63,7 @@ export class ToDoReadComponent implements OnInit {
     console.log(this.userService.archiveid);
     this.userService.Archive().subscribe(data => {
       console.log( data);
+      window.location.reload();
     });
   }
 
