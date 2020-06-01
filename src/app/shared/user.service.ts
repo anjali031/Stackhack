@@ -9,7 +9,8 @@ import { Todonew } from './todonew.model';
   providedIn: 'root'
 })
 export class UserService {
-
+  deleteid = '';
+  archiveid = '';
   constructor( public http: HttpClient ) { }
   readonly rootURL = 'https://stackhack.pythonanywhere.com/';
 
@@ -36,6 +37,8 @@ export class UserService {
       Status: todonew.Status,
       Color: todonew.Color,
       label: todonew.label,
+      Remind: todonew.Remind,
+      DueDate: todonew.DueDate,
     };
     const Headers = new HttpHeaders()
       .set('Authorization', 'token ' + localStorage.getItem('token'));
@@ -53,6 +56,8 @@ export class UserService {
       Status: todo.Status,
       Color: todo.Color,
       label: todo.label,
+      Remind: todo.Remind,
+      DueDate: todo.DueDate,
     };
     const Headers = new HttpHeaders()
       .set('Authorization', 'token ' + localStorage.getItem('token'));
@@ -60,7 +65,16 @@ export class UserService {
   }
   deletebyid() {
     const Headers = new HttpHeaders().set('Authorization', 'token ' + localStorage.getItem('token'));
-    return this.http.delete(this.rootURL + 'Todo/tododetail/' + localStorage.getItem('id') , {headers: Headers});
+    return this.http.delete(this.rootURL + 'Todo/tododetail/' + this.deleteid , {headers: Headers});
+  }
+
+  Archiveread() {
+    const Headers = new HttpHeaders()
+      .set('Authorization', 'token ' + localStorage.getItem('token'));
+    return this.http.get(this.rootURL + 'Todo/ArcheiveList/', {headers: Headers});
+  }
+  Archive() {
+    return this.http.put('https://stackhack.pythonanywhere.com/Todo/Archeive/' + this.archiveid, {headers: Headers});
   }
 }
 

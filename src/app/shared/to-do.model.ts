@@ -4,4 +4,6 @@ export class ToDo {
     Status: string;
     Color: string;
     label: string;
+    Remind: string;
+    DueDate: string;
 }

@@ -16,6 +16,7 @@ export class ToDoReadComponent implements OnInit {
   todonew: Todonew;
   data: any = {};
   i = '';
+  id = '';
   token: boolean ;
   condition = false;
   condition1 = false;
@@ -29,7 +30,6 @@ export class ToDoReadComponent implements OnInit {
   // tslint:disable-next-line: no-inferrable-types
   isLoginError: boolean = false;
   userpattern = '^[a-z0-9_-]{3,15}$';
-  passwordPattern = '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{4,}';
   emailPattern = '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$';
 
   constructor(private userService: UserService, private router: Router) { }
@@ -40,6 +40,7 @@ export class ToDoReadComponent implements OnInit {
     this.tokenexists();
     this.resetForm1();
     this.resetForm2();
+    this.archiveRead();
   }
 
   tokenexists() {
@@ -56,6 +57,16 @@ export class ToDoReadComponent implements OnInit {
 
 
   }
+  archive(value) {
+    console.log(value);
+    this.userService.archiveid = value;
+    console.log(this.userService.archiveid);
+    this.userService.Archive().subscribe(data => {
+      console.log( data);
+    });
+  }
+
+
   read() {
     this.userService.read().subscribe(data => {
       console.log(data);
@@ -65,6 +76,11 @@ export class ToDoReadComponent implements OnInit {
       console.log(err.message);
       }
     );
+  }
+  archiveRead() {
+    this.userService.Archiveread().subscribe(data => {
+      console.log('Archeve', data);
+    });
   }
 
   print() {
@@ -116,6 +132,8 @@ export class ToDoReadComponent implements OnInit {
       Status: '',
       Color: '',
       label: '',
+      Remind: '',
+      DueDate: '',
     };
   }
   resetForm1(form?: NgForm) {
@@ -129,6 +147,14 @@ export class ToDoReadComponent implements OnInit {
       confirm_password: '',
     };
   }
+  delete(value) {
+    console.log(value);
+    this.userService.deleteid = value;
+    this.userService.deletebyid().subscribe((data: any) => {
+      console.log(data);
+      window.location.reload();
+    });
+  }
   resetForm2(form?: NgForm) {
     if (form != null) {
       form.reset();
@@ -139,6 +165,8 @@ export class ToDoReadComponent implements OnInit {
       Status: '',
       Color: '',
       label: '',
+      Remind: '',
+      DueDate: '',
     };
   }
   check() {
