@@ -20,7 +20,7 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" *ngIf="token == false">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block img-fluid " src="../../../assets/ea83749e-02e4-4446-aa53-14119c1f2c4a.jpg" alt="First slide">
+        <img class="d-block img-fluid " src="https://i.ibb.co/Wn75swS/photo-2020-06-02-18-56-41.jpg" alt="First slide">
       </div>
     </div>
   </div>
@@ -32,11 +32,11 @@
             <div class="container">
               <div class="row">
                   <div class="col-9 col-sm-9">
-                    <h3 style="color: #169bd1;">Your Todos</h3>
+                    <h3 style="color: #169bd1;">Your Todo's</h3>
       
                   </div>
                   <div class="col-3 col-sm-3 col-md-2 ml-auto">
-                    <button class="btn btn-info center-block" style="margin-right: 0px;" data-toggle="modal" data-target="#todoCreateModal"><span class="fa fa-plus"></span> Add Todos</button>            
+                    <button class="btn btn-info center-block" style="margin-right: 0px;" data-toggle="modal" data-target="#todoCreateModal"><span class="fa fa-plus"></span> Add a Todo</button>            
                   </div>
               </div>
             </div>
@@ -49,13 +49,30 @@
           <form class="form-inline" *ngIf="token == true">
 
             <select class="custom-select" id="filterstatus">
-                <option selected>Status As... </option>
+                <option value="" disabled selected>Status As... </option>
+                <option value="">None</option>
                 <option value="1">Start</option>
                 <option value="3">OnGoing</option>
                 <option value="2">Done</option>
               </select>
+              <select class="custom-select" id="filterlabel">
+                <option value="" disabled selected>Label As... </option>
+                <option value="">None</option>
+                <option value="1">High</option>
+                <option value="3">Medium</option>
+                <option value="2">Low</option>
+              </select>            
+              <select class="custom-select" id="filtercolor">
+                <option value="" disabled selected>Color As...</option>
+                <option value="">None</option>
+                <option value="1">Red</option>
+                <option value="2">Blue</option>
+                <option value="3">Green</option>
+                <option value="4">Violet</option>
+                <option value="5">Orange</option>
+              </select>
             <input class="form-control " type="search" placeholder="Search" id="filtersearch">
-            <button class="btn btn-outline-success" type="submit" (click)="OnFilter()">Search</button>
+            <button class="btn btn-outline-info" type="submit" (click)="OnFilter()">Apply</button>
           </form>
           <br>
           <br>
@@ -84,7 +101,6 @@
           </header>
           </div>
           <div class="container" style="padding: 0px 0px 20px 0px;" *ngIf="token == true">
-      
           <div class="card"  *ngFor="let a of data.data; let i = index" >
               <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
                   <div class="d-lg-none d-xl-none">
@@ -137,7 +153,7 @@
                           <p>{{a.Description}}</p>
                       </div>
                       <div class="col-sm-5 col-lg-3 col-md-4">
-                        <div class="row ">
+                        <div class="row justify-content-center">
                           <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;" >{{a.label}}</p>
                           <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;">{{a.Status}}</p>
       
@@ -199,7 +215,7 @@
                         <p>{{a.Description}}</p>
                     </div>
                     <div class="col-sm-5 col-lg-3 col-md-4">
-                        <div class="row ">
+                        <div class="row justify-content-center">
                         <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;" >{{a.label}}</p>
                         <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;">{{a.Status}}</p>
     

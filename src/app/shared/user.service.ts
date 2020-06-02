@@ -13,6 +13,9 @@ export class UserService {
   archiveid = '';
   status = '';
   search = '';
+  label = '';
+  color = '';
+
   constructor( public http: HttpClient ) { }
   readonly rootURL = 'https://stackhack.pythonanywhere.com/';
 
@@ -82,7 +85,8 @@ export class UserService {
   filter() {
     const Headers = new HttpHeaders()
       .set('Authorization', 'token ' + localStorage.getItem('token'));
-    return this.http.get(this.rootURL + 'Todo/filter/?Status=' + this.status + '&search=' + this.search, {headers: Headers});
+    // tslint:disable-next-line: max-line-length
+    return this.http.get(this.rootURL + 'Todo/filter/?Status=' + this.status + '&label=' + this.label + '&Color=' + this.color + '&search=' + this.search, {headers: Headers});
   }
 
 }
