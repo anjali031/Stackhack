@@ -79,11 +79,26 @@ export class ToDoReadComponent implements OnInit {
       }
     );
   }
+
+
   archiveRead() {
     this.userService.Archiveread().subscribe(data => {
       console.log('Archeve', data);
       this.archivedata = data;
     });
+  }
+
+  OnFilter() {
+    // tslint:disable-next-line: no-unused-expression
+    this.userService.status = (document.getElementById('filterstatus') as HTMLInputElement).value;
+    // tslint:disable-next-line: no-unused-expression
+    this.userService.search = (document.getElementById('filtersearch') as HTMLInputElement).value;
+    console.log(this.userService.status);
+    console.log(this.userService.search);
+    this.userService.filter().subscribe(data => {
+      console.log('filter ' , data);
+    });
+
   }
 
   print() {

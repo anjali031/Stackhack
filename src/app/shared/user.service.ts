@@ -11,6 +11,8 @@ import { Todonew } from './todonew.model';
 export class UserService {
   deleteid = '';
   archiveid = '';
+  status = '';
+  search = '';
   constructor( public http: HttpClient ) { }
   readonly rootURL = 'https://stackhack.pythonanywhere.com/';
 
@@ -76,5 +78,12 @@ export class UserService {
   Archive() {
     return this.http.put('https://stackhack.pythonanywhere.com/Todo/Archeive/' + this.archiveid, {headers: Headers});
   }
+
+  filter() {
+    const Headers = new HttpHeaders()
+      .set('Authorization', 'token ' + localStorage.getItem('token'));
+    return this.http.get(this.rootURL + 'Todo/filter/?Status=' + this.status + '&search=' + this.search, {headers: Headers});
+  }
+
 }
 

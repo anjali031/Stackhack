@@ -17,6 +17,14 @@
 
 
 
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" *ngIf="token == false">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block img-fluid " src="../../../assets/ea83749e-02e4-4446-aa53-14119c1f2c4a.jpg" alt="First slide">
+      </div>
+    </div>
+  </div>
+  
 
 <div class="container col-12" >
     <div class="container" >
@@ -34,6 +42,23 @@
             </div>
           </div>
           <h3><hr><hr></h3>
+
+            
+          
+          
+          <form class="form-inline">
+
+            <select class="custom-select" id="filterstatus">
+                <option selected>Status As... </option>
+                <option value="1">Start</option>
+                <option value="3">OnGoing</option>
+                <option value="2">Done</option>
+              </select>
+            <input class="form-control " type="search" placeholder="Search" id="filtersearch">
+            <button class="btn btn-outline-success" type="submit" (click)="OnFilter()">Search</button>
+          </form>
+          <br>
+          <br>
           <div class="col-12 " *ngIf="token == false">
           <header class="jumbotron bg-info align-self-center" style="max-width: 920px; ">
               <div class="container ">
