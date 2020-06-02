@@ -19,171 +19,177 @@
 
 
 <div class="container col-12" >
-    <div class="row" style="padding: 20px 0px 0px 0px;" *ngIf="token == true">
-      <div class="container">
-        <div class="row">
-            <div class="col-9 col-sm-9">
-              <h3 style="color: #169bd1;">Your Todos</h3>
-
-            </div>
-            <div class="col-3 col-sm-3 col-md-2 ml-auto">
-              <button class="btn btn-info center-block" style="margin-right: 0px;" data-toggle="modal" data-target="#todoCreateModal"><span class="fa fa-plus"></span> Add Todos</button>            
-            </div>
-        </div>
-      </div>
-    </div>
-    <h3><hr><hr></h3>
-    <div class="col-12 " *ngIf="token == false">
-    <header class="jumbotron bg-info align-self-center" style="max-width: 920px; ">
-        <div class="container ">
-            <div class="row row-header ">
-                <div class="col-12 col-sm-6">
-                    <h1>Todo Management</h1>
-                    <p>Create your todos here to stay productive at your mundane taskd and get reminded of them on time </p>
-                </div>
-                <!--div class="col-12 col-sm align-self-center">
-                    <img src="./img/logo.png" alt="" srcset="" class="img-fluid">
-                </div-->
-                <div class ="col-12 col-sm-6 align-self-center">
-                    <!--a role="button" class="btn btn-block nav-link btn-warning"
-                        data-toggle="tooltip" data-html="true"  title="Or Call us at  <br><strong>+852 12345678</strong>"
-                        data-placement="bottom" href="#reserveform">Reserve Table</a--> 
-                    <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="modal" data-target="#todoLogin">Login</a> 
-                    <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="modal" data-target="#todoRegistrationForm">Sign-Up</a> 
-
-               </div>
-
-            </div>
-        </div>
-    </header>
-    </div>
-    <div class="container" style="padding: 0px 0px 20px 0px;" *ngIf="token == true">
-
-    <div class="card"  *ngFor="let a of data.data; let i = index" >
-        <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
-            <div class="d-lg-none d-xl-none">
-  
-            <div class="row" >  
-                <h5 class="col-9">{{a.Title}}</h5>
-                <span class="col-1" >
-                    <a type="button" (click)="use(i)" class="" data-toggle="tooltip" data-placement="top" title="Update">
-                        <span class="fa fa-pencil-square-o" data-toggle="modal" data-target="#todoUpdateModal"></span>
-                    </a>
-                </span>
-                <span class="col-1" >
-                    <a type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
-                        <span class="fa fa-trash"></span>
-                    </a>
-                </span>
-                <span class="col-1" >
-                    <a type="button" (click)="archive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Archive">
-                        <span class="fa fa-archive"></span>
-                    </a>
-                </span>
-            </div>
-          </div>
-          <div class="d-none d-lg-block d-xl-block">
-  
-            <div class="row" >  
-                <h5 class="col-9">{{a.Title}}</h5>
-                <span class="col-1" >
-                    <a type="button" (click)="use(i)" class="" data-toggle="tooltip" data-placement="top" title="Update">
-                        <span data-toggle="modal" data-target="#todoUpdateModal">Update</span>
-                    </a>
-                </span>
-                <span class="col-1" >
-                    <a type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
-                        <span>Delete</span>
-                    </a>
-                </span>
-                <span class="col-1" >
-                    <a type="button" (click)="archive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Archive">
-                        <span>Archive</span>
-                    </a>
-                </span>
-            </div>
-          </div>
-        </div>
-        <div class="card-content" >
-
-            <div class="row" style="margin: 15px 15px 15px 15px;">
-                <div class="col-sm-7 col-lg-9 col-md-8">
-                    <p>{{a.Description}}</p>
-                </div>
-                <div class="col-sm-5 col-lg-3 col-md-4">
-                  <div class="row ">
-                    <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;" >{{a.label}}</p>
-                    <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;">{{a.Status}}</p>
-
+    <div class="container" >
+        <div class="row" style="padding: 20px 0px 0px 0px;" *ngIf="token == true">
+            <div class="container">
+              <div class="row">
+                  <div class="col-9 col-sm-9">
+                    <h3 style="color: #169bd1;">Your Todos</h3>
+      
                   </div>
-                </div>
-            </div>
-
-        </div>
-
-  </div>
-
-
-    </div>
-    <div class="row" style="padding: 20px 0px 0px 0px;" *ngIf="token == true && archivedata.data  != 0">
-        <div class="container">
-          <div class="row">
-              <div class="col-12 col-sm-12">
-                <h3 style="color:#169bd1;">Your Archieves</h3>
-                </div>
-          </div>
-        </div>
-      </div>
-      <h3><hr><hr></h3>
-      <div class="container" style="padding: 0px 0px 20px 0px;" *ngIf="token == true && archivedata.data  !== 0 " >
-  
-      <div class="card"  *ngFor="let a of archivedata.data; let i = index" >
-          <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
-              <div class="d-lg-none d-xl-none">
-    
-              <div class="row" >  
-                  <h5 class="col-9">{{a.Title}}</h5>
-                 
-                  <span class="col-1" >
-                      <a type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
-                          <span class="fa fa-trash"></span>
-                      </a>
-                  </span>
-              </div>
-            </div>
-            <div class="d-none d-lg-block d-xl-block">
-    
-              <div class="row" >  
-                  <h5 class="col-9">{{a.Title}}</h5>
-                  <span class="col-1" >
-                      <a type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
-                          <span>Delete</span>
-                      </a>
-                  </span>
+                  <div class="col-3 col-sm-3 col-md-2 ml-auto">
+                    <button class="btn btn-info center-block" style="margin-right: 0px;" data-toggle="modal" data-target="#todoCreateModal"><span class="fa fa-plus"></span> Add Todos</button>            
+                  </div>
               </div>
             </div>
           </div>
-          <div class="card-content" >
-  
-              <div class="row" style="margin: 15px 15px 15px 15px;">
-                  <div class="col-sm-7 col-lg-9 col-md-8">
-                      <p>{{a.Description}}</p>
+          <h3><hr><hr></h3>
+          <div class="col-12 " *ngIf="token == false">
+          <header class="jumbotron bg-info align-self-center" style="max-width: 920px; ">
+              <div class="container ">
+                  <div class="row row-header ">
+                      <div class="col-12 col-sm-6">
+                          <h1>Todo Management</h1>
+                          <p>Create your todos here to stay productive at your mundane taskd and get reminded of them on time </p>
+                      </div>
+                      <!--div class="col-12 col-sm align-self-center">
+                          <img src="./img/logo.png" alt="" srcset="" class="img-fluid">
+                      </div-->
+                      <div class ="col-12 col-sm-6 align-self-center">
+                          <!--a role="button" class="btn btn-block nav-link btn-warning"
+                              data-toggle="tooltip" data-html="true"  title="Or Call us at  <br><strong>+852 12345678</strong>"
+                              data-placement="bottom" href="#reserveform">Reserve Table</a--> 
+                          <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="modal" data-target="#todoLogin">Login</a> 
+                          <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="modal" data-target="#todoRegistrationForm">Sign-Up</a> 
+      
+                     </div>
+      
                   </div>
-                  <div class="col-sm-5 col-lg-3 col-md-4">
-                    <div class="row ">
-                      <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;" >{{a.label}}</p>
-                      <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;">{{a.Status}}</p>
-  
+              </div>
+          </header>
+          </div>
+          <div class="container" style="padding: 0px 0px 20px 0px;" *ngIf="token == true">
+      
+          <div class="card"  *ngFor="let a of data.data; let i = index" >
+              <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
+                  <div class="d-lg-none d-xl-none">
+        
+                  <div class="row" >  
+                      <h5 class="col-9">{{a.Title}}</h5>
+                      <span class="col-1" >
+                          <a type="button" (click)="use(i)" class="" data-toggle="tooltip" data-placement="top" title="Update">
+                              <span class="fa fa-pencil-square-o" data-toggle="modal" data-target="#todoUpdateModal"></span>
+                          </a>
+                      </span>
+                      <span class="col-1" >
+                          <a type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
+                              <span class="fa fa-trash"></span>
+                          </a>
+                      </span>
+                      <span class="col-1" >
+                          <a type="button" (click)="archive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Archive">
+                              <span class="fa fa-archive"></span>
+                          </a>
+                      </span>
+                  </div>
+                </div>
+                <div class="d-none d-lg-block d-xl-block">
+        
+                  <div class="row" >  
+                      <h5 class="col-9">{{a.Title}}</h5>
+                      <span class="col-1" >
+                          <a type="button" (click)="use(i)" class="" data-toggle="tooltip" data-placement="top" title="Update">
+                              <span data-toggle="modal" data-target="#todoUpdateModal">Update</span>
+                          </a>
+                      </span>
+                      <span class="col-1" >
+                          <a type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
+                              <span>Delete</span>
+                          </a>
+                      </span>
+                      <span class="col-1" >
+                          <a type="button" (click)="archive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Archive">
+                              <span>Archive</span>
+                          </a>
+                      </span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-content" >
+      
+                  <div class="row" style="margin: 15px 15px 15px 15px;">
+                      <div class="col-sm-7 col-lg-9 col-md-8">
+                          <p>{{a.Description}}</p>
+                      </div>
+                      <div class="col-sm-5 col-lg-3 col-md-4">
+                        <div class="row ">
+                          <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;" >{{a.label}}</p>
+                          <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;">{{a.Status}}</p>
+      
+                        </div>
+                      </div>
+                  </div>
+      
+              </div>
+      
+        </div>
+      
+      
+          </div>
+    </div>
+    <h1><hr><hr></h1>
+    <div class="container">
+        <div class="row" style="padding: 20px 0px 0px 0px;" *ngIf="token == true && archivedata.data  != 0">
+            <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12">
+                    <h3 style="color:#169bd1;">Your Archieves</h3>
                     </div>
-                  </div>
-              </div>
-  
-          </div>
-  
-      </div>
-  
-  
+            </div>
+            </div>
+        </div>
+        <h3><hr><hr></h3>
+        <div class="container" style="padding: 0px 0px 20px 0px;" *ngIf="token == true && archivedata.data  !== 0 " >
+    
+        <div class="card"  *ngFor="let a of archivedata.data; let i = index" >
+            <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
+                <div class="d-lg-none d-xl-none">
+        
+                <div class="row" >  
+                    <h5 class="col-9">{{a.Title}}</h5>
+                    
+                    <span class="col-1" >
+                        <a type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
+                            <span class="fa fa-trash"></span>
+                        </a>
+                    </span>
+                </div>
+                </div>
+                <div class="d-none d-lg-block d-xl-block">
+        
+                <div class="row" >  
+                    <h5 class="col-9">{{a.Title}}</h5>
+                    <span class="col-1" >
+                        <a type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
+                            <span>Delete</span>
+                        </a>
+                    </span>
+                </div>
+                </div>
+            </div>
+            <div class="card-content" >
+    
+                <div class="row" style="margin: 15px 15px 15px 15px;">
+                    <div class="col-sm-7 col-lg-9 col-md-8">
+                        <p>{{a.Description}}</p>
+                    </div>
+                    <div class="col-sm-5 col-lg-3 col-md-4">
+                        <div class="row ">
+                        <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;" >{{a.label}}</p>
+                        <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;">{{a.Status}}</p>
+    
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    
+        </div>
     </div>
+
 </div>
 
 <div id="todoUpdateModal" class="modal fade" role="dialog">
