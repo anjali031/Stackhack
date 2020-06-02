@@ -12,10 +12,17 @@
     border-bottom: 1px ridge;
     min-height: 400px;
   }
-  .footer {
+  footer {
     margin: 0px auto;
     padding: 20px 0px;
   }
+
+  li.nav-item{
+    cursor: pointer;
+  }
+p{
+  text-transform: capitalize;
+}
   header.jumbotron {
     margin: 0px auto;
     padding: 70px 30px;

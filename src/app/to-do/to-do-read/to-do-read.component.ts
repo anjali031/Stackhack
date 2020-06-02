@@ -25,6 +25,7 @@ export class ToDoReadComponent implements OnInit {
   signupSuccess: any = {};
   Loginerror: any = {} ;
   LoginSuccess: any = {};
+  archivedata: any = {};
 
   user: User;
   // tslint:disable-next-line: no-inferrable-types
@@ -81,6 +82,7 @@ export class ToDoReadComponent implements OnInit {
   archiveRead() {
     this.userService.Archiveread().subscribe(data => {
       console.log('Archeve', data);
+      this.archivedata = data;
     });
   }
 

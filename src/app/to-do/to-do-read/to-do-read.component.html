@@ -19,11 +19,11 @@
 
 
 <div class="container col-12" >
-    <div class="row" *ngIf="token == true">
+    <div class="row" style="padding: 20px 0px 0px 0px;" *ngIf="token == true">
       <div class="container">
         <div class="row">
             <div class="col-9 col-sm-9">
-              <h3 style="color: #169DB2;">Your Todos</h3>
+              <h3 style="color: #169bd1;">Your Todos</h3>
 
             </div>
             <div class="col-3 col-sm-3 col-md-2 ml-auto">
@@ -34,7 +34,7 @@
     </div>
     <h3><hr><hr></h3>
     <div class="col-12 " *ngIf="token == false">
-    <header class="jumbotron bg-info align-self-center" style="max-width: 1111px; ">
+    <header class="jumbotron bg-info align-self-center" style="max-width: 920px; ">
         <div class="container ">
             <div class="row row-header ">
                 <div class="col-12 col-sm-6">
@@ -57,7 +57,8 @@
         </div>
     </header>
     </div>
-    <div class="container" *ngIf="token == true">
+    <div class="container" style="padding: 0px 0px 20px 0px;" *ngIf="token == true">
+
     <div class="card"  *ngFor="let a of data.data; let i = index" >
         <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
             <div class="d-lg-none d-xl-none">
@@ -121,6 +122,68 @@
         </div>
 
   </div>
+
+
+    </div>
+    <div class="row" style="padding: 20px 0px 0px 0px;" *ngIf="token == true && archivedata.data  != 0">
+        <div class="container">
+          <div class="row">
+              <div class="col-12 col-sm-12">
+                <h3 style="color:#169bd1;">Your Archieves</h3>
+                </div>
+          </div>
+        </div>
+      </div>
+      <h3><hr><hr></h3>
+      <div class="container" style="padding: 0px 0px 20px 0px;" *ngIf="token == true && archivedata.data  !== 0 " >
+  
+      <div class="card"  *ngFor="let a of archivedata.data; let i = index" >
+          <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
+              <div class="d-lg-none d-xl-none">
+    
+              <div class="row" >  
+                  <h5 class="col-9">{{a.Title}}</h5>
+                 
+                  <span class="col-1" >
+                      <a type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
+                          <span class="fa fa-trash"></span>
+                      </a>
+                  </span>
+              </div>
+            </div>
+            <div class="d-none d-lg-block d-xl-block">
+    
+              <div class="row" >  
+                  <h5 class="col-9">{{a.Title}}</h5>
+                  <span class="col-1" >
+                      <a type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
+                          <span>Delete</span>
+                      </a>
+                  </span>
+              </div>
+            </div>
+          </div>
+          <div class="card-content" >
+  
+              <div class="row" style="margin: 15px 15px 15px 15px;">
+                  <div class="col-sm-7 col-lg-9 col-md-8">
+                      <p>{{a.Description}}</p>
+                  </div>
+                  <div class="col-sm-5 col-lg-3 col-md-4">
+                    <div class="row ">
+                      <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;" >{{a.label}}</p>
+                      <p style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px;">{{a.Status}}</p>
+  
+                    </div>
+                  </div>
+              </div>
+  
+          </div>
+  
+      </div>
+  
+  
+    </div>
 </div>
 
 <div id="todoUpdateModal" class="modal fade" role="dialog">
@@ -356,3 +419,50 @@
         </div>
     </div>
 </div>
+
+<footer class="footer bg-info">
+    <div class="container">
+        <div class="row"> 
+            <div class="col-4 offset-1 col-sm-2 col-xs-6">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="./aboutus.html">About</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="./contactus.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-7 col-sm-5 col-xs-6">
+                <h5>Our Address</h5>
+                <address>
+                  121, Clear Water Bay Road<br>
+                  Clear Water Bay, Kowloon<br>
+                  HONG KONG<br>
+                  <i class="fa fa-phone fa-lg"></i>: +852 1234 5678<br>
+                  <i class="fa fa-fax fa-lg"></i>: +852 8765 4321<br>
+                  <i class="fa fa-envelope fa-lg"></i>: 
+                  <a href="mailto:confusion@food.net">confusion@food.net</a>
+               </address>
+            </div>
+          
+            <div class="col-12 col-sm-4 align-self-center">
+                <div class="text-center">
+                    <div class="text-center">
+                        <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+                        <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                        <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+                    </div>
+                </div>
+            </div>
+          
+       </div>
+       <div class="row justify-content-center">             
+            <div class="col-auto">
+                <p>© Copyright 2018 Ristorante Con Fusion</p>
+            </div>
+       </div>
+    </div>
+</footer>
