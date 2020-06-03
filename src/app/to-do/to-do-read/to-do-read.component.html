@@ -8,8 +8,8 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item " *ngIf="token == true"><a (click)="Logout()" class="nav-link" href="#" style="cursor: pointer;"><span class="fa fa-sign-out"  ></span> Logout</a></li>
                 <li class="nav-item" *ngIf="token == false"><a data-toggle="modal" data-target="#todoLogin" class="nav-link"><span class="fa fa-sign-in"></span> Login</a></li>
-                <li class="nav-item" *ngIf="token == false"><a  class="nav-link" data-toggle="modal" data-target="#todoRegistrationForm"><span class="fa fa-user"></span> Sign-Up</a></li>
-                <li class="nav-item"><a data-toggle="modal" data-target="#todoCreateModal" class="nav-link" ><span class="fa fa-plus"></span> Add Todos </a></li>
+                <li class="nav-item" *ngIf="token == false"><a  class="nav-link" data-toggle="modal" data-target="#todoRegistrationForm"><span class="fa fa-user"></span> SignUp</a></li>
+                <li class="nav-item"><a data-toggle="modal" data-target="#todoCreateModal" class="nav-link" ><span class="fa fa-plus"></span> Add a Todo </a></li>
             </ul>
         </div>
     </div>
@@ -30,18 +30,20 @@
     <div class="container" >
         <div class="row" style="padding: 20px 0px 0px 0px;" *ngIf="token == true">
             <div class="container">
-              <div class="row">
+                <div class="row">
                   <div class="col-9 col-sm-9">
                     <h3 style="color: #169bd1;">Your Todo's</h3>
       
                   </div>
                   <div class="col-3 col-sm-3 col-md-2 ml-auto">
-                    <button class="btn btn-info center-block" *ngIf="archieve == false" style="margin-right: 0px;" data-toggle="modal" data-target="#todoCreateModal"><span class="fa fa-plus"></span> Add a Todo</button>  
-                    <button class="btn btn-info center-block" *ngIf="archieve == false" style="margin-right: 0px;" (click)="ArchieveShow()"><span class="fa fa-archive" ></span> Show Archive</button>            
+                   <div class="row">
+                    <button class="btn btn-info center-block" *ngIf="archieve == false" style="margin-bottom: 5px;" data-toggle="modal" data-target="#todoCreateModal"><span class="fa fa-plus"></span> Add a Todo</button>  
+                    <button class="btn btn-info center-block" *ngIf="archieve == false" style="margin-bottom: 5px;" (click)="ArchieveShow()"><span class="fa fa-archive" ></span> Show Archive</button>            
                     <button class="btn btn-info center-block" *ngIf="archieve == true" style="margin-right: 0px;" (click)="ArchieveHide()"><span class="fa fa-archive"></span> Hide Archive </button>            
           
                   </div>
-              </div>
+                 </div>
+                </div>
             </div>
           </div>
           <h3><hr><hr></h3>
@@ -50,7 +52,7 @@
           
           
           <form class="form-inline" *ngIf="token == true && archieve == false">
-
+            <input class="form-control " type="search" placeholder="Search" id="filtersearch">
             <select class="custom-select" id="filterstatus">
                 <option value="" disabled selected>Status As... </option>
                 <option value="">None</option>
@@ -74,7 +76,7 @@
                 <option value="4">Violet</option>
                 <option value="5">Orange</option>
               </select>
-            <input class="form-control " type="search" placeholder="Search" id="filtersearch">
+            
             <button class="btn btn-outline-info" type="submit" (click)="OnFilter()">Apply</button>
           </form>
           <br>
@@ -97,10 +99,14 @@
               </div>
           </header>
           </div>
+          <div>
+            <img class="d-block img-fluid " *ngIf="data.data == 0 && archieve == false" src="../../../assets/content_not_found.png" alt="">
 
+          </div>
         <div class="container"> 
         <div class="row" *ngIf="token == true && archieve == false">
           <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12" *ngFor="let a of data.data; let i = index"  style="padding: 0px 0px 20px 0px;" >
+
             <div class="card"  >
               <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
                   <div class="row" >  
@@ -180,8 +186,12 @@
         </div>
         </div>
     </div>
+    <div>
+        <img class="d-block img-fluid " *ngIf="archivedata.data == 0  &&  archieve == true" src="../../../assets/content_not_found.png" alt="">
+
+      </div>
     <div class="container">
-        <div class="row"  *ngIf="token == true &&  archieve == true">
+        <div class="row"  *ngIf="token == true &&  archieve == true && archivedata.data != 0">
             <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-12">
@@ -202,7 +212,7 @@
                                     <a style="padding: 3px;" type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
                                         <span class="fa fa-trash"></span>
                                     </a>
-                                    <a style="padding: 3px;" type="button" (click)="archive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Un-Archive">
+                                    <a style="padding: 3px;" type="button" (click)="unArchive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Un-Archive">
                                         <span class="fa fa-archive"></span>
                                     </a>
                                 </span>
@@ -507,42 +517,9 @@
 </div>
 
 <footer class="footer bg-info">
-    <div class="container">
-        <div class="row"> 
-            <div class="col-4 offset-1 col-sm-2 col-xs-6">
-                <h5>Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Menu</a></li>
-                </ul>
-            </div>
-            <div class="col-7 col-sm-5 col-xs-6">
-                <h5>Our Address</h5>
-                <address>
-                  <i class="fa fa-fax fa-lg"></i>: +852 8765 4321<br>
-                  <i class="fa fa-envelope fa-lg"></i>: 
-                  <a href="mailto:confusion@food.net">confusion@food.net</a>
-               </address>
-            </div>
-          
-            <div class="col-12 col-sm-4 align-self-center">
-                <div class="text-center">
-                    <div class="text-center">
-                        <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
-                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
-                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
-                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
-                        <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
-                        <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
-                    </div>
-                </div>
-            </div>
-          
-       </div>
        <div class="row justify-content-center">             
             <div class="col-auto">
-                <p>© Copyright 2018 Ristorante Con Fusion</p>
+                <p>© Powered by Stackhack</p>
             </div>
        </div>
-    </div>
 </footer>

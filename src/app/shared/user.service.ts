@@ -11,6 +11,7 @@ import { Todonew } from './todonew.model';
 export class UserService {
   deleteid = '';
   archiveid = '';
+  Unarchiveid = '';
   status = '';
   search = '';
   label = '';
@@ -76,6 +77,11 @@ export class UserService {
   }
   Archive() {
     return this.http.put('https://stackhack.pythonanywhere.com/Todo/Archeive/' + this.archiveid, {headers: Headers});
+  }
+  Unarchive() {
+    const Headers = new HttpHeaders()
+      .set('Authorization', 'token ' + localStorage.getItem('token'));
+    return this.http.put(this.rootURL + 'Todo/Remove-archeieve/' + this.Unarchiveid, {headers: Headers});
   }
 
   filter() {

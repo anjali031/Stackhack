@@ -98,8 +98,15 @@ export class ToDoReadComponent implements OnInit {
       console.log('Archeve', data);
       this.archivedata = data;
     });
-
-
+  }
+  unArchive(value) {
+    console.log(value);
+    this.userService.Unarchiveid = value;
+    console.log(this.userService.Unarchiveid);
+    this.userService.Unarchive().subscribe(data => {
+      console.log( data);
+      window.location.reload();
+    });
 
   }
 
