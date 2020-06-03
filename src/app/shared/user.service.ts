@@ -49,11 +49,7 @@ export class UserService {
       .set('Authorization', 'token ' + localStorage.getItem('token'));
     return this.http.post(this.rootURL + 'Todo/todo/', body, {headers : Headers});
   }
-  read() {
-    const Headers = new HttpHeaders()
-      .set('Authorization', 'token ' + localStorage.getItem('token'));
-    return this.http.get(this.rootURL + 'Todo/todo/', {headers: Headers});
-  }
+
   update(todo: ToDo) {
     const body: ToDo = {
       Title: todo.Title,

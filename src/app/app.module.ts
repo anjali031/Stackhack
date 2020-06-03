@@ -7,13 +7,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserService } from './shared/user.service';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ToDoReadComponent } from './to-do/to-do-read/to-do-read.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     ToDoReadComponent
   ],
   imports: [

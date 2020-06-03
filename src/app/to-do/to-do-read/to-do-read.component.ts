@@ -17,6 +17,7 @@ export class ToDoReadComponent implements OnInit {
   data: any = {};
   i = '';
   id = '';
+  archieve = false;
   token: boolean ;
   condition = false;
   condition1 = false;
@@ -44,6 +45,7 @@ export class ToDoReadComponent implements OnInit {
     this.archiveRead();
   }
 
+
   tokenexists() {
     if (localStorage.getItem('token')) {
       this.token = true;
@@ -55,9 +57,8 @@ export class ToDoReadComponent implements OnInit {
     console.log(index);
     this.i = index;
     this.print();
-
-
   }
+
   archive(value) {
     console.log(value);
     this.userService.archiveid = value;
@@ -70,22 +71,36 @@ export class ToDoReadComponent implements OnInit {
 
 
   read() {
-    this.userService.read().subscribe(data => {
-      console.log(data);
-      this.data = data;
-    },
-    err => {
-      console.log(err.message);
-      }
-    );
+    // tslint:disable-next-line: no-conditional-assignment
+    if (localStorage.getItem('token')) {
+      this.userService.filter().subscribe(data => {
+        console.log('filter', data);
+        this.data = data;
+
+      },
+      err => {
+        console.log(err.message);
+        }
+      );
+    }
+  }
+  ArchieveShow() {
+    this.archieve = true;
   }
 
-
+  ArchieveHide() {
+    this.archieve = false;
+  }
   archiveRead() {
+      // tslint:disable-next-line: no-conditional-assignment
+
     this.userService.Archiveread().subscribe(data => {
       console.log('Archeve', data);
       this.archivedata = data;
     });
+
+
+
   }
 
   OnFilter() {
@@ -103,6 +118,8 @@ export class ToDoReadComponent implements OnInit {
 
     this.userService.filter().subscribe(data => {
       console.log('filter ' , data);
+      this.data = data;
+
     });
 
   }
@@ -265,10 +282,7 @@ export class ToDoReadComponent implements OnInit {
       }
     );
   }
-  Logout() {
-    localStorage.removeItem('token');
-    window.location.reload();
-  }
+
   OnSubmit2(username, password) {
     this.condition = true;
     this.userService.loginUser(username, password).subscribe((data: any) => {
@@ -286,6 +300,9 @@ export class ToDoReadComponent implements OnInit {
    (err: HttpErrorResponse) => {
      this.isLoginError = true;
    });
- }
-
+  }
+  Logout() {
+    localStorage.removeItem('token');
+    window.location.reload();
+  }
 }
