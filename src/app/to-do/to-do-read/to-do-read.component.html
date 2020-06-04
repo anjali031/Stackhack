@@ -16,17 +16,20 @@
 </nav>
 
 
-
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" *ngIf="token == false">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block img-fluid " src="https://i.ibb.co/Wn75swS/photo-2020-06-02-18-56-41.jpg" alt="First slide">
+<div class="container">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" *ngIf="token == false" style="margin-top: 8px;">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block img-fluid " src="https://i.ibb.co/Wn75swS/photo-2020-06-02-18-56-41.jpg" alt="First slide">
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+</div>
+ 
   
 
 <div class="container col-12" >
+    <h3  *ngIf="token == true "><hr><hr></h3>    
     <div class="container" >
         <div class="row" style="padding: 20px 0px 0px 0px;" *ngIf="token == true">
             <div class="container">
@@ -46,7 +49,7 @@
                 </div>
             </div>
           </div>
-          <h3><hr><hr></h3>
+          <h3  *ngIf="token == true"><hr><hr></h3>
 
             
           
@@ -100,14 +103,14 @@
           </header>
           </div>
           <div>
-            <img class="d-block img-fluid " *ngIf="data.data == 0 && archieve == false" src="../../../assets/content_not_found.png" alt="">
+            <img class="d-block img-fluid " *ngIf="data.data == 0 && archieve == false" src="https://i.ibb.co/bPMBH47/content-not-found.png" alt="">
 
           </div>
         <div class="container"> 
         <div class="row" *ngIf="token == true && archieve == false">
           <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12" *ngFor="let a of data.data; let i = index"  style="padding: 0px 0px 20px 0px;" >
 
-            <div class="card"  >
+            <div class="card border-info mb-3"  >
               <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
                   <div class="row" >  
                       <h5 class="col-lg-7 col-md-6 col-sm-6 ">{{a.Title}}</h5>
@@ -128,10 +131,10 @@
               <div class="card-content" >
       
                   <div  style="margin: 15px 15px 15px 15px;">
-                          <p style="min-height: 150px;">{{a.Description}}</p>
+                          <p >{{a.Description}}</p>
                         <div class="row justify-content-center">
                             <div class="col-12">
-                              <p>Todo Label</p>
+                              <p>Label As</p>
                             </div>
                             <div class="col-12 align-self-center">
                                 <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.label}}</span>
@@ -140,7 +143,7 @@
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-12">
-                              <p>Todo Status</p> 
+                              <p>Status As</p> 
                             </div>
                             <div class="col-12 align-self-center">
                                 <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Status}}</span>
@@ -149,7 +152,7 @@
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-12">
-                              <p>Todo Color</p> 
+                              <p>Color As</p> 
                             </div>
                             <div class="col-12 align-self-center">
                                 <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Color}}</span>
@@ -158,7 +161,7 @@
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-12">
-                              <p>Todo DueDate</p>
+                              <p>DueDate</p>
                             </div>
                             <div class="col-12 align-self-center">
                                 <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.DueDate | date:'medium'}}</span>
@@ -167,7 +170,7 @@
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-12">
-                              <p>Todo Remind</p> 
+                              <p>Remind</p> 
                             </div>
                             <div class="col-12 align-self-center">
                                 <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Remind | date:'medium'
@@ -187,7 +190,7 @@
         </div>
     </div>
     <div>
-        <img class="d-block img-fluid " *ngIf="archivedata.data == 0  &&  archieve == true" src="../../../assets/content_not_found.png" alt="">
+        <img class="d-block img-fluid " *ngIf="archivedata.data == 0  &&  archieve == true" src="https://i.ibb.co/bPMBH47/content-not-found.png" alt="">
 
       </div>
     <div class="container">
@@ -204,7 +207,7 @@
             <div class="container"> 
                 <div class="row" *ngIf="token == true && archieve == true">
                   <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12" style="padding: 0px 0px 20px 0px;" *ngFor="let a of archivedata.data" >
-                    <div class="card"  >
+                    <div class="card border-info mb-3"  >
                         <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
                             <div class="row" >  
                                 <h5 class="col-lg-7 col-md-6 col-sm-6 ">{{a.Title}}</h5>
@@ -225,7 +228,7 @@
                                     <p style="min-height: 150px;">{{a.Description}}</p>
                                     <div class="row justify-content-center">
                                         <div class="col-12">
-                                          <p>Todo Label</p>
+                                          <p>Label As</p>
                                         </div>
                                         <div class="col-12 align-self-center">
                                             <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.label}}</span>
@@ -234,7 +237,7 @@
                                     </div>
                                     <div class="row justify-content-center">
                                         <div class="col-12">
-                                          <p>Todo Status</p> 
+                                          <p>Status As</p> 
                                         </div>
                                         <div class="col-12 align-self-center">
                                             <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Status}}</span>
@@ -243,7 +246,7 @@
                                     </div>
                                     <div class="row justify-content-center">
                                         <div class="col-12">
-                                          <p>Todo Color</p> 
+                                          <p>Color As</p> 
                                         </div>
                                         <div class="col-12 align-self-center">
                                             <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Color}}</span>
@@ -252,7 +255,7 @@
                                     </div>
                                     <div class="row justify-content-center">
                                         <div class="col-12">
-                                          <p>Todo DueDate</p>
+                                          <p>DueDate</p>
                                         </div>
                                         <div class="col-12 align-self-center">
                                             <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.DueDate | date:'medium'}}</span>
@@ -261,7 +264,7 @@
                                     </div>
                                     <div class="row justify-content-center">
                                         <div class="col-12">
-                                          <p>Todo Remind</p> 
+                                          <p>Remind</p> 
                                         </div>
                                         <div class="col-12 align-self-center">
                                             <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Remind | date:'medium'
@@ -280,8 +283,6 @@
             </div>
     
         </div>
-
-
 <div id="todoUpdateModal" class="modal fade" role="dialog">
     <div class="modal-dialog " role="content">
         <!-- Modal content-->
