@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserService } from './shared/user.service';
 import { ToDoReadComponent } from './to-do/to-do-read/to-do-read.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +21,7 @@ import { ToDoReadComponent } from './to-do/to-do-read/to-do-read.component';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

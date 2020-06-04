@@ -6,6 +6,7 @@ import { ToDo } from 'src/app/shared/to-do.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from 'src/app/shared/user.model';
 import { Todonew } from 'src/app/shared/todonew.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-to-do-read',
   templateUrl: './to-do-read.component.html',
@@ -34,7 +35,7 @@ export class ToDoReadComponent implements OnInit {
   userpattern = '^[a-z0-9_-]{3,15}$';
   emailPattern = '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$';
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private SpinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.resetForm();
@@ -60,11 +61,14 @@ export class ToDoReadComponent implements OnInit {
   }
 
   archive(value) {
+    this.SpinnerService.show();
     console.log(value);
     this.userService.archiveid = value;
     console.log(this.userService.archiveid);
     this.userService.Archive().subscribe(data => {
       console.log( data);
+      this.SpinnerService.hide();
+
       window.location.reload();
     });
   }
@@ -73,10 +77,11 @@ export class ToDoReadComponent implements OnInit {
   read() {
     // tslint:disable-next-line: no-conditional-assignment
     if (localStorage.getItem('token')) {
+      this.SpinnerService.show();
       this.userService.filter().subscribe(data => {
         console.log('filter', data);
         this.data = data;
-
+        this.SpinnerService.hide();
       },
       err => {
         console.log(err.message);
@@ -93,18 +98,26 @@ export class ToDoReadComponent implements OnInit {
   }
   archiveRead() {
       // tslint:disable-next-line: no-conditional-assignment
+    if (localStorage.getItem('token')) {
+      this.SpinnerService.show();
+      this.userService.Archiveread().subscribe(data => {
+        console.log('Archeve', data);
+        this.archivedata = data;
+        this.SpinnerService.hide();
 
-    this.userService.Archiveread().subscribe(data => {
-      console.log('Archeve', data);
-      this.archivedata = data;
-    });
+      });
+    }
+
   }
   unArchive(value) {
+    this.SpinnerService.show();
     console.log(value);
     this.userService.Unarchiveid = value;
     console.log(this.userService.Unarchiveid);
     this.userService.Unarchive().subscribe(data => {
       console.log( data);
+      this.SpinnerService.hide();
+
       window.location.reload();
     });
 
@@ -122,11 +135,11 @@ export class ToDoReadComponent implements OnInit {
     console.log(this.userService.search);
     console.log(this.userService.label);
     console.log(this.userService.color);
-
+    this.SpinnerService.show();
     this.userService.filter().subscribe(data => {
       console.log('filter ' , data);
       this.data = data;
-
+      this.SpinnerService.hide();
     });
 
   }
@@ -196,10 +209,13 @@ export class ToDoReadComponent implements OnInit {
     };
   }
   delete(value) {
+    this.SpinnerService.show();
     console.log(value);
     this.userService.deleteid = value;
     this.userService.deletebyid().subscribe((data: any) => {
       console.log(data);
+      this.SpinnerService.hide();
+
       window.location.reload();
     });
   }
@@ -231,6 +247,7 @@ export class ToDoReadComponent implements OnInit {
   OnSubmit0(form: NgForm) {
     this.check();
     this.condition1 = true;
+    this.SpinnerService.show();
     if (this.passwordMatch === 'Matched'){
       this.userService.asJeweler(form.value)
       .subscribe((data: any) => {
@@ -239,6 +256,8 @@ export class ToDoReadComponent implements OnInit {
           this.condition1 = false;
           this.signupSuccess = data;
           this.resetForm1();
+          this.SpinnerService.hide();
+
          // window.location.reload();
           //  this.router.navigate(['/login']);
         } else {
@@ -258,12 +277,15 @@ export class ToDoReadComponent implements OnInit {
   }
 
   OnSubmit(form: NgForm) {
+    this.SpinnerService.show();
     this.userService.update(form.value)
     .subscribe((data: any) => {
       if (data.status === 200) {
         console.log(data);
         this.resetForm();
         window.location.reload();
+        this.SpinnerService.hide();
+
       } else {
         console.log(data);
       }
@@ -274,11 +296,13 @@ export class ToDoReadComponent implements OnInit {
     );
   }
   OnSubmit1(form: NgForm) {
+    this.SpinnerService.show();
     this.userService.create(form.value)
     .subscribe((data: any) => {
       if (data.status === 200) {
         console.log(data);
         this.resetForm2();
+        this.SpinnerService.hide();
         window.location.reload();
       } else {
         console.log(data);
@@ -292,12 +316,14 @@ export class ToDoReadComponent implements OnInit {
 
   OnSubmit2(username, password) {
     this.condition = true;
+    this.SpinnerService.show();
     this.userService.loginUser(username, password).subscribe((data: any) => {
      // localStorage.setItem('token', data.data.token);
       if (data.response === 200 ) {
         localStorage.setItem('token' , data.data.token );
         this.condition = false;
         console.log(data);
+        this.SpinnerService.hide();
         window.location.reload();
       } else {
         this.Loginerror = data;
@@ -309,7 +335,10 @@ export class ToDoReadComponent implements OnInit {
    });
   }
   Logout() {
+    this.SpinnerService.show();
     localStorage.removeItem('token');
     window.location.reload();
+    this.SpinnerService.hide();
+
   }
 }

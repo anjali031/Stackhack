@@ -17,7 +17,7 @@
 
 
 <div class="container">
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" *ngIf="token == false" style="margin-top: 8px;">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" *ngIf="token == false" style="margin-top: 50px;">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img class="d-block img-fluid " src="https://i.ibb.co/Wn75swS/photo-2020-06-02-18-56-41.jpg" alt="First slide">
@@ -103,6 +103,9 @@
           </header>
           </div>
           <div>
+            <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+                <p style="color: white">Please Wait. </p>  
+            </ngx-spinner> 
             <img class="d-block img-fluid " *ngIf="data.data == 0 && archieve == false" src="https://i.ibb.co/bPMBH47/content-not-found.png" alt="">
 
           </div>
