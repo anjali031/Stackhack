@@ -2,9 +2,8 @@
     margin-top: 50px;
     padding: 0px 0px 0px 0px;
 }
-.form-inline .custom-select, .form-inline .input-group {
-    width: auto;
-    margin-left: 10px;
-    margin-right: 10px;
+.form-inline .custom-select, .form-inline .input-group, .form-inline .form-control {
+    width: 240px;
+    margin-right: auto;
 
 }

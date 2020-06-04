@@ -29,27 +29,26 @@
   
 
 <div class="container col-12" >
-    <h3  *ngIf="token == true "><hr><hr></h3>    
+    <h3  *ngIf="token == true "><hr></h3>    
     <div class="container" >
         <div class="row" style="padding: 20px 0px 0px 0px;" *ngIf="token == true">
-            <div class="container">
-                <div class="row">
-                  <div class="col-9 col-sm-9">
-                    <h3 style="color: #169bd1;">Your Todo's</h3>
-      
-                  </div>
-                  <div class="col-3 col-sm-3 col-md-2 ml-auto">
-                   <div class="row">
-                    <button class="btn btn-info center-block" *ngIf="archieve == false" style="margin-bottom: 5px;" data-toggle="modal" data-target="#todoCreateModal"><span class="fa fa-plus"></span> Add a Todo</button>  
-                    <button class="btn btn-info center-block" *ngIf="archieve == false" style="margin-bottom: 5px;" (click)="ArchieveShow()"><span class="fa fa-archive" ></span> Show Archive</button>            
-                    <button class="btn btn-info center-block" *ngIf="archieve == true" style="margin-right: 0px;" (click)="ArchieveHide()"><span class="fa fa-archive"></span> Hide Archive </button>            
-          
-                  </div>
-                 </div>
+                <div class="container">
+                    <div class="row">
+                        <div class=" col-8">
+                            <h3 style="color: #169bd1;">Your Todo's</h3>
+                        </div>
+                        <div class="col-4">
+                            <div class="row">
+                                <button class="btn btn-info center-block" *ngIf="archieve == false" style="margin: 10px 0px 10px auto;" data-toggle="modal" data-target="#todoCreateModal"><span class="fa fa-plus"></span> Add a Todo</button>  
+                                <button class="btn btn-info center-block" *ngIf="archieve == false" style="margin: auto;" (click)="ArchieveShow()"><span class="fa fa-archive" ></span> Show Archive</button>            
+                                <button class="btn btn-info center-block" *ngIf="archieve == true" style="margin-left: auto;" (click)="ArchieveHide()"><span class="fa fa-archive"></span> Hide Archive </button>  
+                            </div>          
+                        </div>
+                       
+                    </div>
                 </div>
             </div>
-          </div>
-          <h3  *ngIf="token == true"><hr><hr></h3>
+          <h3 *ngIf="token == true"><hr></h3>
 
             
           
@@ -90,7 +89,7 @@
                   <div class="row row-header ">
                       <div class="col-12 col-sm-6">
                           <h1>Todo Management</h1>
-                          <p>Create your todos here to stay productive at your mundane taskd and get reminded of them on time </p>
+                          <p>Create Your well organised todo list Here </p>
                       </div>
                       <div class ="col-12 col-sm-6 align-self-center"> 
                           <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="modal" data-target="#todoLogin">Login</a> 
@@ -136,28 +135,28 @@
                   <div  style="margin: 15px 15px 15px 15px;">
                           <p>{{a.Description}}</p>
                         <div class="row justify-content-center">
-                            <div class="col-12">
+                            <div class="col-6">
                               <p>Label As</p>
                             </div>
-                            <div class="col-12 align-self-center">
+                            <div class="col-6 allign-self-center">
                                 <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.label}}</span>
                             </div>
 
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-12">
+                            <div class="col-6">
                               <p>Status As</p> 
                             </div>
-                            <div class="col-12 align-self-center">
+                            <div class="col-6 allign-self-center">
                                 <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Status}}</span>
                             </div>
 
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-12">
+                            <div class="col-6">
                               <p>Color As</p> 
                             </div>
-                            <div class="col-12 align-self-center">
+                            <div class="col-6 align-self-center">
                                 <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Color}}</span>
                             </div>
 

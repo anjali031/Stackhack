@@ -13,8 +13,8 @@
     min-height: 400px;
   }
   footer {
-    margin: 0px auto;
-    padding: 20px 0px;
+    margin: 0px 0px;
+    padding: 20px 0px 0px 0px;
   }
 img.d-block {
   width: 850px;
