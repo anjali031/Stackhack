@@ -89,7 +89,7 @@
                   <div class="row row-header ">
                       <div class="col-12 col-sm-6">
                           <h1>Todo Management</h1>
-                          <p>Create Your well organised todo list Here </p>
+                          <p>Create Your well organised Todo list here. <br>Get Productive at your Mundane tasks with Us.</p>
                       </div>
                       <div class ="col-12 col-sm-6 align-self-center"> 
                           <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="modal" data-target="#todoLogin">Login</a> 
@@ -113,10 +113,10 @@
           <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12" *ngFor="let a of data.data; let i = index"  style="padding: 0px 0px 20px 0px;" >
 
             <div class="card border-info mb-3"  >
-              <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
+              <div class="card-header ">
                   <div class="row" >  
-                      <h5 class="col-lg-7 col-md-6 col-sm-6 ">{{a.Title}}</h5>
-                      <span class="col-lg-5 col-md-6 col-sm-6 " >
+                      <h4 style="margin: auto;">{{a.Title}}</h4>
+                      <!--span class="col-lg-5 col-md-6 col-sm-6 " >
                           <a style="padding: 3px;" type="button" (click)="use(i)" class="" data-toggle="tooltip" data-placement="top" title="Update">
                               <span class="fa fa-pencil-square-o" data-toggle="modal" data-target="#todoUpdateModal"></span>
                           </a>
@@ -126,61 +126,77 @@
                           <a style="padding: 3px;" type="button" (click)="archive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Archive">
                               <span class="fa fa-archive"></span>
                           </a>
-                      </span>
+                      </span-->
                   </div>
                 </div>
               
               <div class="card-content" >
-      
-                  <div  style="margin: 15px 15px 15px 15px;">
-                          <p>{{a.Description}}</p>
-                        <div class="row justify-content-center">
+                        <div class="row">
+                            <p style="margin: 20px auto;">{{a.Description}}</p>
+                        </div>
+                        <div class="row ">
                             <div class="col-6">
-                              <p>Label As</p>
+                                <div class="row">
+                                    <p style="margin: 20px 20px 20px auto;"> <strong>Label As :</strong> </p>
+                                </div>
                             </div>
-                            <div class="col-6 allign-self-center">
-                                <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.label}}</span>
+                            <div class="col-6 ">
+                                <div class="row">
+                                    <p style="margin: 20px auto 20px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.label}}</span></p>
+                                </div>
                             </div>
 
                         </div>
-                        <div class="row justify-content-center">
+                        <div class="row ">
                             <div class="col-6">
-                              <p>Status As</p> 
+                                <div class="row">
+                                    <p style="margin: 20px 20px 20px auto;"> <strong>Status As :</strong> </p>
+                                </div>
                             </div>
-                            <div class="col-6 allign-self-center">
-                                <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Status}}</span>
+                            <div class="col-6 ">
+                                <div class="row">
+                                    <p style="margin: 20px auto 20px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Status}}</span></p>
+                                </div>
                             </div>
-
                         </div>
-                        <div class="row justify-content-center">
+                        <div class="row ">
                             <div class="col-6">
-                              <p>Color As</p> 
+                                <div class="row">
+                                    <p style="margin: 20px 20px 20px auto;"> <strong>Color As :</strong> </p>
+                                </div>
                             </div>
-                            <div class="col-6 align-self-center">
-                                <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Color}}</span>
+                            <div class="col-6 ">
+                                <div class="row">
+                                    <p style="margin: 20px auto 20px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Color}}</span></p>
+                                </div>
                             </div>
-
                         </div>
-                        <div class="row justify-content-center">
+                        <div class="row ">
                             <div class="col-12">
-                              <p>DueDate</p>
+                                <div class="row">
+                                    <p style="margin:20px auto;"> <strong>DueDate :</strong> </p>
+                                </div>
                             </div>
-                            <div class="col-12 align-self-center">
-                                <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.DueDate | date:'medium'}}</span>
+                            <div class="col-12 ">
+                                <div class="row">
+                                    <p style="margin: 20px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.DueDate | date:'medium'}}</span></p>
+                                </div>
                             </div>
-
                         </div>
-                        <div class="row justify-content-center">
+
+                        <div class="row ">
                             <div class="col-12">
-                              <p>Remind</p> 
+                                <div class="row">
+                                    <p style="margin:20px auto;"> <strong>Remind :</strong> </p>
+                                </div>
                             </div>
-                            <div class="col-12 align-self-center">
-                                <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Remind | date:'medium'
-                                }}</span>
+                            <div class="col-12 ">
+                                <div class="row">
+                                    <p style="margin: 20px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Remind | date:'medium'}}</span></p>
+                                </div>
                             </div>
-
                         </div>
-                  </div>
+
       
               </div>
             </div>
@@ -212,68 +228,88 @@
                     <div class="card border-info mb-3"  >
                         <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
                             <div class="row" >  
-                                <h5 class="col-lg-7 col-md-6 col-sm-6 ">{{a.Title}}</h5>
-                                <span class="col-lg-5 col-md-6 col-sm-6 " >
+                                <h4 style="margin: auto;">{{a.Title}}</h4>
+                                <!--span class="col-lg-5 col-md-6 col-sm-6 " >
+                                    <a style="padding: 3px;" type="button" (click)="use(i)" class="" data-toggle="tooltip" data-placement="top" title="Update">
+                                        <span class="fa fa-pencil-square-o" data-toggle="modal" data-target="#todoUpdateModal"></span>
+                                    </a>
                                     <a style="padding: 3px;" type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
                                         <span class="fa fa-trash"></span>
                                     </a>
-                                    <a style="padding: 3px;" type="button" (click)="unArchive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Un-Archive">
+                                    <a style="padding: 3px;" type="button" (click)="archive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Archive">
                                         <span class="fa fa-archive"></span>
                                     </a>
-                                </span>
+                                </span-->
                             </div>
                         </div>
                         
                         <div class="card-content" >
                 
-                            <div  style="margin: 15px 15px 15px 15px;">
-                                    <p >{{a.Description}}</p>
-                                    <div class="row justify-content-center">
-                                        <div class="col-12">
-                                          <p>Label As</p>
-                                        </div>
-                                        <div class="col-12 align-self-center">
-                                            <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.label}}</span>
-                                        </div>
-            
+                            <div class="row">
+                                <p style="margin: 20px auto;">{{a.Description}}</p>
+                            </div>
+                            <div class="row ">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <p style="margin: 20px 20px 20px auto;"> <strong>Label As :</strong> </p>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-12">
-                                          <p>Status As</p> 
-                                        </div>
-                                        <div class="col-12 align-self-center">
-                                            <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Status}}</span>
-                                        </div>
-            
+                                </div>
+                                <div class="col-6 ">
+                                    <div class="row">
+                                        <p style="margin: 20px auto 20px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.label}}</span></p>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-12">
-                                          <p>Color As</p> 
-                                        </div>
-                                        <div class="col-12 align-self-center">
-                                            <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Color}}</span>
-                                        </div>
-            
+                                </div>
+    
+                            </div>
+                            <div class="row ">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <p style="margin: 20px 20px 20px auto;"> <strong>Status As :</strong> </p>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-12">
-                                          <p>DueDate</p>
-                                        </div>
-                                        <div class="col-12 align-self-center">
-                                            <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.DueDate | date:'medium'}}</span>
-                                        </div>
-            
+                                </div>
+                                <div class="col-6 ">
+                                    <div class="row">
+                                        <p style="margin: 20px auto 20px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Status}}</span></p>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-12">
-                                          <p>Remind</p> 
-                                        </div>
-                                        <div class="col-12 align-self-center">
-                                            <span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Remind | date:'medium'
-                                            }}</span>
-                                        </div>
-            
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <p style="margin: 20px 20px 20px auto;"> <strong>Color As :</strong> </p>
                                     </div>
+                                </div>
+                                <div class="col-6 ">
+                                    <div class="row">
+                                        <p style="margin: 20px auto 20px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Color}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <p style="margin:20px auto;"> <strong>DueDate :</strong> </p>
+                                    </div>
+                                </div>
+                                <div class="col-12 ">
+                                    <div class="row">
+                                        <p style="margin: 20px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.DueDate | date:'medium'}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="row ">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <p style="margin:20px auto;"> <strong>Remind :</strong> </p>
+                                    </div>
+                                </div>
+                                <div class="col-12 ">
+                                    <div class="row">
+                                        <p style="margin: 20px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Remind | date:'medium'}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                 
                         </div>
@@ -284,7 +320,7 @@
                 </div>
             </div>
     
-        </div>
+        
 <div id="todoUpdateModal" class="modal fade" role="dialog">
     <div class="modal-dialog " role="content">
         <!-- Modal content-->
