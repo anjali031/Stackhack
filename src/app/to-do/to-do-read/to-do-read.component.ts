@@ -7,10 +7,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { User } from 'src/app/shared/user.model';
 import { Todonew } from 'src/app/shared/todonew.model';
 import { NgxSpinnerService } from 'ngx-spinner';
+import {NgbPopoverConfig} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-to-do-read',
   templateUrl: './to-do-read.component.html',
-  styleUrls: ['./to-do-read.component.css']
+  styleUrls: ['./to-do-read.component.css'],
+  providers: [NgbPopoverConfig]
 })
 export class ToDoReadComponent implements OnInit {
   todo: ToDo;
@@ -35,7 +38,8 @@ export class ToDoReadComponent implements OnInit {
   userpattern = '^[a-z0-9_-]{3,15}$';
   emailPattern = '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$';
 
-  constructor(private userService: UserService, private router: Router, private SpinnerService: NgxSpinnerService) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private userService: UserService, private router: Router, private SpinnerService: NgxSpinnerService, config: NgbPopoverConfig) { }
 
   ngOnInit(): void {
     this.resetForm();

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { UserService } from './shared/user.service';
 import { ToDoReadComponent } from './to-do/to-do-read/to-do-read.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgbModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

@@ -172,7 +172,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row ">
+                    <!--div class="row ">
                         <div class="col-12">
                             <div class="row">
                                 <h6 style="margin:5px auto;"> Remind : </h6>
@@ -195,7 +195,14 @@
                                 <p style="margin: 5px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.DueDate | date:'medium'}}</span></p>
                             </div>
                         </div>
+                    </div-->
+                    <div class="row">
+                        <button style="margin: 10px auto 10px auto;" type="button btn-info" class="btn btn-outline-info"
+                        ngbPopover=" Remind : {{a.Remind | date:'medium'}}  DueDate : {{a.DueDate | date:'medium'}}" popoverTitle="Detailed Info">
+                        More Info
+                        </button>
                     </div>
+
                 </div>
                 <div class="card-footer" >
                     <p class="row" style="margin-bottom: 0px;">
@@ -212,6 +219,8 @@
                     
                 </div>
 
+
+        
             </div>
         </div>
       
@@ -287,7 +296,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row ">
+                            <!--div class="row ">
                                 <div class="col-12">
                                     <div class="row">
                                         <h6 style="margin:5px auto;"> Remind : </h6>
@@ -310,9 +319,14 @@
                                         <p style="margin: 5px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.DueDate | date:'medium'}}</span></p>
                                     </div>
                                 </div>
-                            </div>
+                            </div-->
         
-                            
+                            <div class="row">
+                                <button style="margin: 10px auto 10px auto;" type="button btn-info" class="btn btn-outline-info"
+                                ngbPopover=" Remind : {{a.Remind | date:'medium'}}  DueDate : {{a.DueDate | date:'medium'}}" popoverTitle="Detailed Info">
+                                More Info
+                                </button>
+                            </div>
                             </div>
                         <div class="card-footer">
                             <p class="row" style="margin-bottom: 0px;">
