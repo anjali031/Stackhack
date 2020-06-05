@@ -258,12 +258,23 @@
             <div class="container"> 
                 <div class="row" *ngIf="token == true && archieve == true">
                   <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12" style="padding: 0px 0px 20px 0px;" *ngFor="let a of archivedata.data" >
-                    <div class="card border-info mb-3"  >
-                        <div class="card-header " style="margin-bottom: 0px;padding-bottom: 0px;">
+                    <div class="card border-info mb-3"  style="min-width: 20rem;margin-left: 1rem!important;margin-right: 1rem!important"  >
+                        <div class="card-header ">
                             <div class="row" >  
                                 <h4 style="margin: auto;">{{a.Title}}</h4>
+                                <!--span class="col-lg-5 col-md-6 col-sm-6 " >
+                                    <a style="padding: 3px;" type="button" (click)="use(i)" class="" data-toggle="tooltip" data-placement="top" title="Update">
+                                        <span class="fa fa-pencil-square-o" data-toggle="modal" data-target="#todoUpdateModal"></span>
+                                    </a>
+                                    <a style="padding: 3px;" type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <span class="fa fa-trash"></span>
+                                    </a>
+                                    <a style="padding: 3px;" type="button" (click)="archive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Archive">
+                                        <span class="fa fa-archive"></span>
+                                    </a>
+                                </span-->
                             </div>
-                        </div>
+                          </div>
                         
                         <div class="card-content" >
                 
