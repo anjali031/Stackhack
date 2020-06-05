@@ -130,75 +130,74 @@
                   </div>
                 </div>
               
-              <div class="card-content" >
-                        <div class="row">
-                            <p style="margin: 20px auto;">{{a.Description}}</p>
-                        </div>
-                        <div class="row ">
-                            <div class="col-6">
-                                <div class="row">
-                                    <p style="margin: 20px 20px 20px auto;"> <strong>Label As :</strong> </p>
-                                </div>
-                            </div>
-                            <div class="col-6 ">
-                                <div class="row">
-                                    <p style="margin: 20px auto 20px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.label}}</span></p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row ">
-                            <div class="col-6">
-                                <div class="row">
-                                    <p style="margin: 20px 20px 20px auto;"> <strong>Status As :</strong> </p>
-                                </div>
-                            </div>
-                            <div class="col-6 ">
-                                <div class="row">
-                                    <p style="margin: 20px auto 20px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Status}}</span></p>
-                                </div>
+                <div class="card-content" >
+                
+                    <div class="row">
+                        <h5 style="margin: 20px auto;">{{a.Description}}</h5>
+                    </div>
+                    <div class="row ">
+                        <div class="col-6">
+                            <div class="row">
+                                <h6 style="margin: 5px 20px 5px auto;">Label As :</h6>
                             </div>
                         </div>
-                        <div class="row ">
-                            <div class="col-6">
-                                <div class="row">
-                                    <p style="margin: 20px 20px 20px auto;"> <strong>Color As :</strong> </p>
-                                </div>
-                            </div>
-                            <div class="col-6 ">
-                                <div class="row">
-                                    <p style="margin: 20px auto 20px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Color}}</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row ">
-                            <div class="col-12">
-                                <div class="row">
-                                    <p style="margin:20px auto;"> <strong>DueDate :</strong> </p>
-                                </div>
-                            </div>
-                            <div class="col-12 ">
-                                <div class="row">
-                                    <p style="margin: 20px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.DueDate | date:'medium'}}</span></p>
-                                </div>
+                        <div class="col-6 ">
+                            <div class="row">
+                                <p style="margin: 5px auto 5px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.label}}</span></p>
                             </div>
                         </div>
 
-                        <div class="row ">
-                            <div class="col-12">
-                                <div class="row">
-                                    <p style="margin:20px auto;"> <strong>Remind :</strong> </p>
-                                </div>
-                            </div>
-                            <div class="col-12 ">
-                                <div class="row">
-                                    <p style="margin: 20px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Remind | date:'medium'}}</span></p>
-                                </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-6">
+                            <div class="row">
+                                <h6 style="margin: 5px 20px 5px auto;"> Status As : </h6>
                             </div>
                         </div>
+                        <div class="col-6 ">
+                            <div class="row">
+                                <p style="margin: 5px auto 5px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Status}}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-6">
+                            <div class="row">
+                                <h6 style="margin: 5px 20px 5px auto;"> Color As : </h6>
+                            </div>
+                        </div>
+                        <div class="col-6 ">
+                            <div class="row">
+                                <p style="margin: 5px auto 5px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Color}}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-12">
+                            <div class="row">
+                                <h6 style="margin:5px auto;"> DueDate : </h6>
+                            </div>
+                        </div>
+                        <div class="col-12 ">
+                            <div class="row">
+                                <p style="margin: 5px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.DueDate | date:'medium'}}</span></p>
+                            </div>
+                        </div>
+                    </div>
 
-      
-              </div>
+                    <div class="row ">
+                        <div class="col-12">
+                            <div class="row">
+                                <h6 style="margin:5px auto;"> Remind : </h6>
+                            </div>
+                        </div>
+                        <div class="col-12 ">
+                            <div class="row">
+                                <p style="margin: 5px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Remind | date:'medium'}}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
             </div>
         </div>
       
@@ -246,67 +245,67 @@
                         <div class="card-content" >
                 
                             <div class="row">
-                                <p style="margin: 20px auto;">{{a.Description}}</p>
+                                <h5 style="margin: 20px auto;">{{a.Description}}</h5>
                             </div>
                             <div class="row ">
                                 <div class="col-6">
                                     <div class="row">
-                                        <p style="margin: 20px 20px 20px auto;"> <strong>Label As :</strong> </p>
+                                        <h6 style="margin: 5px 20px 5px auto;">Label As :</h6>
                                     </div>
                                 </div>
                                 <div class="col-6 ">
                                     <div class="row">
-                                        <p style="margin: 20px auto 20px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.label}}</span></p>
+                                        <p style="margin: 5px auto 5px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.label}}</span></p>
                                     </div>
                                 </div>
-    
+        
                             </div>
                             <div class="row ">
                                 <div class="col-6">
                                     <div class="row">
-                                        <p style="margin: 20px 20px 20px auto;"> <strong>Status As :</strong> </p>
+                                        <h6 style="margin: 5px 20px 5px auto;"> Status As : </h6>
                                     </div>
                                 </div>
                                 <div class="col-6 ">
                                     <div class="row">
-                                        <p style="margin: 20px auto 20px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Status}}</span></p>
+                                        <p style="margin: 5px auto 5px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Status}}</span></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="row ">
                                 <div class="col-6">
                                     <div class="row">
-                                        <p style="margin: 20px 20px 20px auto;"> <strong>Color As :</strong> </p>
+                                        <h6 style="margin: 5px 20px 5px auto;"> Color As : </h6>
                                     </div>
                                 </div>
                                 <div class="col-6 ">
                                     <div class="row">
-                                        <p style="margin: 20px auto 20px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Color}}</span></p>
+                                        <p style="margin: 5px auto 5px 0px;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Color}}</span></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="row ">
                                 <div class="col-12">
                                     <div class="row">
-                                        <p style="margin:20px auto;"> <strong>DueDate :</strong> </p>
+                                        <h6 style="margin:5px auto;"> DueDate : </h6>
                                     </div>
                                 </div>
                                 <div class="col-12 ">
                                     <div class="row">
-                                        <p style="margin: 20px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.DueDate | date:'medium'}}</span></p>
+                                        <p style="margin: 5px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.DueDate | date:'medium'}}</span></p>
                                     </div>
                                 </div>
                             </div>
-    
+        
                             <div class="row ">
                                 <div class="col-12">
                                     <div class="row">
-                                        <p style="margin:20px auto;"> <strong>Remind :</strong> </p>
+                                        <h6 style="margin:5px auto;"> Remind : </h6>
                                     </div>
                                 </div>
                                 <div class="col-12 ">
                                     <div class="row">
-                                        <p style="margin: 20px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Remind | date:'medium'}}</span></p>
+                                        <p style="margin: 5px auto ;"><span style="border: 3px solid #169bd1;border-radius: 10px;padding: 0px 15px 0px 15px;margin: 0px 0px 0px 5px">{{a.Remind | date:'medium'}}</span></p>
                                     </div>
                                 </div>
                             </div>
