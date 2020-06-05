@@ -17,7 +17,7 @@
     padding: 20px 0px 0px 0px;
   }
 img.d-block {
-  width: 850px;
+  width: 790px;
   max-height: 350px;
   margin-left: auto;
   margin-right: auto;
@@ -26,7 +26,7 @@ img.d-block {
     cursor: pointer;
   }
 div.carousel-item.active{
-  background-image: linear-gradient(235deg, black,#021B66);
+  background-image: linear-gradient(235deg,rgb(2, 3, 12),#021B66);
   max-width: 1000;
   margin-left: auto;
   margin-right: auto;

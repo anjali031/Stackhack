@@ -74,7 +74,12 @@ export class ToDoReadComponent implements OnInit {
       this.SpinnerService.hide();
 
       window.location.reload();
-    });
+    },
+    err => {
+      console.log(err.message);
+      this.SpinnerService.hide();
+      }
+    );
   }
 
 
@@ -88,6 +93,7 @@ export class ToDoReadComponent implements OnInit {
         this.SpinnerService.hide();
       },
       err => {
+        this.SpinnerService.hide();
         console.log(err.message);
         }
       );
@@ -109,7 +115,12 @@ export class ToDoReadComponent implements OnInit {
         this.archivedata = data;
         this.SpinnerService.hide();
 
-      });
+      },
+      err => {
+        console.log(err.message);
+        this.SpinnerService.hide();
+        }
+      );
     }
 
   }
@@ -123,7 +134,12 @@ export class ToDoReadComponent implements OnInit {
       this.SpinnerService.hide();
 
       window.location.reload();
-    });
+    },
+    err => {
+      console.log(err.message);
+      this.SpinnerService.hide();
+      }
+    );
 
   }
 
@@ -144,7 +160,12 @@ export class ToDoReadComponent implements OnInit {
       console.log('filter ' , data);
       this.data = data;
       this.SpinnerService.hide();
-    });
+    },
+    err => {
+      console.log(err.message);
+      this.SpinnerService.hide();
+      }
+    );
 
   }
 
@@ -161,19 +182,19 @@ export class ToDoReadComponent implements OnInit {
     if (this.data.data[this.i].Status === 'Ongoing') {
       this.todo.Status = '3';
     }
-    if (this.data.data[this.i].Color === 'Red') {
+    if (this.data.data[this.i].Color === 'Personal') {
       this.todo.Color = '1';
      }
-    if (this.data.data[this.i].Color === 'Blue') {
+    if (this.data.data[this.i].Color === 'Professional') {
       this.todo.Color = '2';
     }
-    if (this.data.data[this.i].Color === 'Green') {
+    if (this.data.data[this.i].Color === 'Work') {
       this.todo.Color = '3';
     }
-    if (this.data.data[this.i].Color === 'Voilet') {
+    if (this.data.data[this.i].Color === 'Outdoor') {
       this.todo.Color = '4';
      }
-    if (this.data.data[this.i].Color === 'Orange') {
+    if (this.data.data[this.i].Color === 'Indoors') {
       this.todo.Color = '5';
     }
     if (this.data.data[this.i].label === 'High') {
@@ -221,7 +242,12 @@ export class ToDoReadComponent implements OnInit {
       this.SpinnerService.hide();
 
       window.location.reload();
-    });
+    },
+    err => {
+      console.log(err.message);
+      this.SpinnerService.hide();
+      }
+    );
   }
   resetForm2(form?: NgForm) {
     if (form != null) {
@@ -247,12 +273,12 @@ export class ToDoReadComponent implements OnInit {
       console.log(this.passwordMatch);
     }
   }
-
+   // signup submit form
   OnSubmit0(form: NgForm) {
     this.check();
     this.condition1 = true;
-    this.SpinnerService.show();
     if (this.passwordMatch === 'Matched'){
+      this.SpinnerService.show();
       this.userService.asJeweler(form.value)
       .subscribe((data: any) => {
         if (data.response === 201) {
@@ -266,12 +292,14 @@ export class ToDoReadComponent implements OnInit {
           //  this.router.navigate(['/login']);
         } else {
           console.log(data);
+          this.SpinnerService.hide();
 
           this.signuperror = data;
         }
       },
       err => {
         console.log(err.message);
+        this.SpinnerService.hide();
          }
       );
     } else {
@@ -279,7 +307,31 @@ export class ToDoReadComponent implements OnInit {
     }
 
   }
+     // login submit form
+  OnSubmit2(username, password) {
+    this.condition = true;
+    this.SpinnerService.show();
+    this.userService.loginUser(username, password).subscribe((data: any) => {
+     // localStorage.setItem('token', data.data.token);
+      if (data.response === 200 ) {
+        localStorage.setItem('token' , data.data.token );
+        this.condition = false;
+        console.log(data);
+        window.location.reload();
+        this.SpinnerService.hide();
+      } else {
+        this.Loginerror = data;
+        console.log(data);
+        this.SpinnerService.hide();
+      }
+   },
+   (err: HttpErrorResponse) => {
+     this.isLoginError = true;
+     this.SpinnerService.hide();
 
+   });
+  }
+  // update todo submit form
   OnSubmit(form: NgForm) {
     this.SpinnerService.show();
     this.userService.update(form.value)
@@ -292,13 +344,16 @@ export class ToDoReadComponent implements OnInit {
 
       } else {
         console.log(data);
+        this.SpinnerService.hide();
       }
     },
     err => {
       console.log(err.message);
+      this.SpinnerService.hide();
       }
     );
   }
+  // create todo submit form
   OnSubmit1(form: NgForm) {
     this.SpinnerService.show();
     this.userService.create(form.value)
@@ -306,38 +361,21 @@ export class ToDoReadComponent implements OnInit {
       if (data.status === 200) {
         console.log(data);
         this.resetForm2();
-        this.SpinnerService.hide();
         window.location.reload();
+        this.SpinnerService.hide();
+
       } else {
         console.log(data);
+        this.SpinnerService.hide();
       }
     },
     err => {
       console.log(err.message);
+      this.SpinnerService.hide();
       }
     );
   }
 
-  OnSubmit2(username, password) {
-    this.condition = true;
-    this.SpinnerService.show();
-    this.userService.loginUser(username, password).subscribe((data: any) => {
-     // localStorage.setItem('token', data.data.token);
-      if (data.response === 200 ) {
-        localStorage.setItem('token' , data.data.token );
-        this.condition = false;
-        console.log(data);
-        this.SpinnerService.hide();
-        window.location.reload();
-      } else {
-        this.Loginerror = data;
-        console.log(data);
-      }
-   },
-   (err: HttpErrorResponse) => {
-     this.isLoginError = true;
-   });
-  }
   Logout() {
     this.SpinnerService.show();
     localStorage.removeItem('token');

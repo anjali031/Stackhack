@@ -70,13 +70,13 @@
                 <option value="2">Low</option>
               </select>            
               <select class="custom-select" id="filtercolor">
-                <option value="" disabled selected>Color As...</option>
+                <option value="" disabled selected>Tag As...</option>
                 <option value="">None</option>
-                <option value="1">Red</option>
-                <option value="2">Blue</option>
-                <option value="3">Green</option>
-                <option value="4">Violet</option>
-                <option value="5">Orange</option>
+                <option value="1">Personal</option>
+                <option value="2">Professional</option>
+                <option value="3">Work</option>
+                <option value="4">Outdoor</option>
+                <option value="5">Indoors</option>
               </select>
             
             <button class="btn btn-outline-info" type="submit" (click)="OnFilter()">Apply</button>
@@ -101,13 +101,18 @@
               </div>
           </header>
           </div>
+          <div class="row" *ngIf="token == true &&  archieve == false" >
+            <h4 style="color: #169bd1;margin: 0px 0px 20px 40px;">Total ({{data.count}})</h4>
+          </div>
           <div>
             <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
                 <p style="color: white">Please Wait. </p>  
             </ngx-spinner> 
             <img class="d-block img-fluid " *ngIf="data.data == 0 && archieve == false" src="https://i.ibb.co/bPMBH47/content-not-found.png" alt="">
-
           </div>
+
+          
+
         <div class="container"> 
         <div class="row" *ngIf="token == true && archieve == false">
           <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12" *ngFor="let a of data.data; let i = index"  style="padding: 0px 0px 20px 0px;" >
@@ -163,7 +168,7 @@
                     <div class="row ">
                         <div class="col-6">
                             <div class="row">
-                                <h6 style="margin: 5px 20px 5px auto;"> Color As : </h6>
+                                <h6 style="margin: 5px 20px 5px auto;"> Tag As : </h6>
                             </div>
                         </div>
                         <div class="col-6 ">
@@ -213,7 +218,7 @@
                                 <span class="fa fa-trash"> Delete</span>
                             </a>
                             <a style="margin: 5px auto;color: #169bd1;" type="button" (click)="archive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Archive">
-                                <span class="fa fa-archive"> Archieve</span>
+                                <span class="fa fa-archive"> Archive</span>
                             </a>
                     </p>
                     
@@ -229,6 +234,12 @@
         </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row" *ngIf="token == true &&  archieve == true" >
+            <h4 class="col-12" style="color: #169bd1;margin: 0px 0px 20px 40px;">Total ({{archivedata.count}})</h4>
+        </div>
+    </div>
+
     <div>
         <img class="d-block img-fluid " *ngIf="archivedata.data == 0  &&  archieve == true" src="https://i.ibb.co/bPMBH47/content-not-found.png" alt="">
 
@@ -238,7 +249,7 @@
             <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-12">
-                    <h5 style="color:#169bd1;">Your Archieves</h5>
+                    <h5 style="color:#169bd1;">Your Archives</h5>
                     </div>
             </div>
             </div>
@@ -287,7 +298,7 @@
                             <div class="row ">
                                 <div class="col-6">
                                     <div class="row">
-                                        <h6 style="margin: 5px 20px 5px auto;"> Color As : </h6>
+                                        <h6 style="margin: 5px 20px 5px auto;"> Tag As : </h6>
                                     </div>
                                 </div>
                                 <div class="col-6 ">
@@ -334,7 +345,7 @@
                                         <span class="fa fa-trash"> Delete</span>
                                     </a>
                                     <a style="margin: 5px auto;" type="button" (click)="unArchive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Archive">
-                                        <span class="fa fa-archive"> Un-Archieve</span>
+                                        <span class="fa fa-archive"> Un-Archive</span>
                                     </a>
                             </p>
                            
@@ -369,7 +380,7 @@
                     <div class="form-group">
                         <label for="">Status as</label>
                         <select class="mdb-select md-form form-control" id="Status" name="Status" #Status="ngModel" [(ngModel)]="todo.Status" required>
-                            <option value="" disabled selected>Set  Status As</option>
+                            <option value="" disabled selected>Set Status As</option>
                             <option value="1">Start</option>
                             <option value="3">OnGoing</option>
                             <option value="2">Done</option>
@@ -378,12 +389,12 @@
                     <div class="form-group">
                         <label for="">Color As</label>
                         <select class="mdb-select md-form form-control" id="Color" name="Color" #Color="ngModel" [(ngModel)]="todo.Color" required>
-                            <option value="" disabled selected>Set  Color As</option>
-                            <option value="1">Red</option>
-                            <option value="2">Blue</option>
-                            <option value="3">Green</option>
-                            <option value="4">Violet</option>
-                            <option value="5">Orange</option>
+                            <option value="" disabled selected>Set Tag As</option>
+                            <option value="1">Personal</option>
+                            <option value="2">Professional</option>
+                            <option value="3">Work</option>
+                            <option value="4">Outdoor</option>
+                            <option value="5">Indoors</option>
                         </select>
                       </div>
                     <div class="form-group">
@@ -444,7 +455,7 @@
                     <div class="form-group">
                         <label for="">Status as</label>
                         <select class="mdb-select md-form form-control"  name="Status" #Status="ngModel" [(ngModel)]="todonew.Status" required>
-                            <option value="" disabled selected>Set  Status As</option>
+                            <option value="" disabled selected>Set Status As</option>
                             <option value="1">Start</option>
                             <option value="3">OnGoing</option>
                             <option value="2">Done</option>
@@ -453,12 +464,12 @@
                     <div class="form-group">
                         <label for="">Color As</label>
                         <select class="mdb-select md-form form-control"  name="Color" #Color="ngModel" [(ngModel)]="todonew.Color" required>
-                            <option value="" disabled selected>Set  Color As</option>
-                            <option value="1">Red</option>
-                            <option value="2">Blue</option>
-                            <option value="3">Green</option>
-                            <option value="4">Violet</option>
-                            <option value="5">Orange</option>
+                            <option value="" disabled selected>Set Tag As</option>
+                            <option value="1">Personal</option>
+                            <option value="2">Professional</option>
+                            <option value="3">Work</option>
+                            <option value="4">Outdoor</option>
+                            <option value="5">Indoors</option>
                         </select>
                       </div>
                     <div class="form-group">
@@ -493,12 +504,12 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">To-Do login </h4>
+                <h4 class="modal-title">To-Do Login </h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="alert alert-warning" *ngIf= "Loginerror.response == 'Error' ">
-                    <strong>Warning!</strong> {{Loginerror.error_message}}
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i><strong> Warning ! </strong> {{Loginerror.error_message}}
                 </div>
                 <form *ngIf="token == false"  [class]="condition == true ? 'was-validated' : 'needs-validation'" novalidate #loginForm="ngForm" (ngSubmit)="OnSubmit2(username.value,password.value)">
                     <div class="form-group">
@@ -511,7 +522,7 @@
                     <div class="form-group">
                         <label for="password1"><i class="fa fa-key" aria-hidden="true"></i>  Password</label>
                         <input id="password1" type="password" class="form-control" #password ngModel name="password" placeholder="Password"  required>
-                        <div class="valid-feedback">Valid.</div>
+                        <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field .</div>                    
                     </div>
                       <div class="form-group text-center">
@@ -528,21 +539,21 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">To-Do Sign-Up </h4>
+                <h4 class="modal-title">To-Do Sign Up </h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="alert alert-warning" *ngIf= "passwordMatch == 'Unmatched' ">
-                    <strong>Warning!</strong> Password do not match 
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i><strong> Warning ! </strong> Password do not match 
                 </div>
                 <div class="alert alert-warning" *ngIf= "signuperror.response == '401' ">
-                    <strong>Warning!</strong> A user with that username already exists
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i><strong> Warning ! </strong> A user with that username already exists
                 </div>
                 <div class="alert alert-warning" *ngIf= "signuperror.response == '403' ">
-                    <strong>Warning!</strong>{{signuperror.error_message}} 
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i><strong> Warning ! </strong>{{signuperror.error_message}} 
                 </div>
                  <div class="alert alert-success"  *ngIf= "signupSuccess.response == '201' ">
-                    <strong>Success !</strong>{{signupSuccess.error_message}} Proceed to Login .                  
+                    <i class="fa fa-check" aria-hidden="true"></i><strong> Success ! </strong>Proceed to Login .                 
                     <button type="button" data-toggle="modal" data-target="#todoLogin" data-dismiss="modal" class="btn btn-success btn-sm ml-5 " >Login</button>
                 </div>
                 <form *ngIf="token == false" [class]="condition1 == true ? 'was-validated' : 'needs-validation'" novalidate #todoRegistrationForm="ngForm" (ngSubmit)="OnSubmit0(todoRegistrationForm)">
@@ -555,7 +566,7 @@
                     <div class="form-group">
                         <label for="username"><i class="fa fa-user-o" aria-hidden="true"></i>  Username</label>
                         <input id="username" class=" form-control " type="text" name="username" #username="ngModel" [(ngModel)]="user.username" placeholder="Enter Username" required [pattern]="userpattern" >
-                        <div class="valid-feedback">Valid.</div>
+                        <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field .</div>
                       </div>                      
                     <div class="form-group">
@@ -567,7 +578,7 @@
                     <div class="form-group">
                         <label for="confirm_password"><i class="fa fa-key" aria-hidden="true"></i>  Confirm Password</label>
                         <input id="confirm_password" type="password" class="form-control" name="confirm_password" #confirm_password="ngModel" [(ngModel)]="user.confirm_password" required placeholder="Confirm Password">
-                        <div class="valid-feedback">Valid.</div>
+                        <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field .</div>                          
                     </div>
                     <div class="form-group text-center">
