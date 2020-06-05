@@ -197,7 +197,21 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="row" style="margin-bottom: 0px;">
+                            <a style="margin: 5px auto;" type="button" (click)="use(i)" class="" data-toggle="tooltip" data-placement="top" title="Update">
+                                <span class="fa fa-pencil-square-o" data-toggle="modal" data-target="#todoUpdateModal"> Update</span>
+                            </a>
+                            <a style="margin: 5px auto;"  type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
+                                <span class="fa fa-trash"> Delete</span>
+                            </a>
+                            <a style="margin: 5px auto;" type="button" (click)="archive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Archive">
+                                <span class="fa fa-archive"> Archieve</span>
+                            </a>
+                    </p>
+                    
+                </div>
             </div>
         </div>
       
@@ -310,7 +324,17 @@
                                 </div>
                             </div>
                             </div>
-                
+                        <div class="card-footer">
+                            <p class="row" style="margin-bottom: 0px;">
+                                    <a style="margin: 5px auto;"  type="button" (click)="delete(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <span class="fa fa-trash"> Delete</span>
+                                    </a>
+                                    <a style="margin: 5px auto;" type="button" (click)="unArchive(a.id)" class="" data-toggle="tooltip" data-placement="top" title="Archive">
+                                        <span class="fa fa-archive"> Un-Archieve</span>
+                                    </a>
+                            </p>
+                           
+                        </div>
                         </div>
                     </div>
                   </div>
