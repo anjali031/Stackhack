@@ -191,10 +191,10 @@ export class ToDoReadComponent implements OnInit {
     if (this.data.data[this.i].Color === 'Work') {
       this.todo.Color = '3';
     }
-    if (this.data.data[this.i].Color === 'Outdoor') {
+    if (this.data.data[this.i].Color === 'Shopping') {
       this.todo.Color = '4';
      }
-    if (this.data.data[this.i].Color === 'Indoors') {
+    if (this.data.data[this.i].Color === 'Others') {
       this.todo.Color = '5';
     }
     if (this.data.data[this.i].label === 'High') {
