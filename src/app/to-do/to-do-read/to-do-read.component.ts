@@ -28,9 +28,12 @@ export class ToDoReadComponent implements OnInit {
   passwordMatch: string ;
   signuperror: any = {} ;
   signupSuccess: any = {};
+  createerror: any = {};
+  updateerror: any = {};
   Loginerror: any = {} ;
   LoginSuccess: any = {};
   archivedata: any = {};
+  datepat = 'YYYY-MM-DDThh:mm[:ss[.uuuuuu]][+HH:MM|-HH:MM|Z]';
 
   user: User;
   // tslint:disable-next-line: no-inferrable-types
@@ -173,6 +176,8 @@ export class ToDoReadComponent implements OnInit {
     localStorage.setItem('id', this.data.data[this.i].id);
     this.todo.Title = this.data.data[this.i].Title;
     this.todo.Description = this.data.data[this.i].Description;
+    this.todo.DueDate = this.data.data[this.i].DueDate;
+    this.todo.Remind = this.data.data[this.i].Remind;
     if (this.data.data[this.i].Status === 'Start') {
       this.todo.Status = '1';
      }
@@ -344,6 +349,7 @@ export class ToDoReadComponent implements OnInit {
 
       } else {
         console.log(data);
+        this.updateerror = data;
         this.SpinnerService.hide();
       }
     },
@@ -366,6 +372,8 @@ export class ToDoReadComponent implements OnInit {
 
       } else {
         console.log(data);
+        this.createerror = data;
+
         this.SpinnerService.hide();
       }
     },

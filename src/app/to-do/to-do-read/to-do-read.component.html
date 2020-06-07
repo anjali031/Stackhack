@@ -381,6 +381,9 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
+                <div class="alert alert-warning" *ngIf= "updateerror.status == '400' ">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i><strong> Warning ! </strong>Feilds might be empty .
+                </div>
                 <form  *ngIf="token == true" #todoUpdateForm="ngForm" (ngSubmit)="OnSubmit(todoUpdateForm)">
                     <div class="form-group">
                       <label for="Title">Title</label>
@@ -445,6 +448,9 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
+                <div class="alert alert-warning" *ngIf= "createerror.status == '400' ">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i><strong> Warning ! </strong> All the feilds are mandatory.
+                </div>
                 <div class="container" *ngIf="token == false">
                     <div class="row row-content">
                         <h4>Seems Like You arent Logged in</h4>
@@ -528,15 +534,11 @@
                     <div class="form-group">
                         <label for="username1"><i class="fa fa-user-o" aria-hidden="true"></i>  Username</label>
                         <input id="username1" type="text" class="form-control"  #username ngModel name="username" placeholder="username" required >
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Use lowercase .</div>                    
                     </div>
                              
                     <div class="form-group">
                         <label for="password1"><i class="fa fa-key" aria-hidden="true"></i>  Password</label>
                         <input id="password1" type="password" class="form-control" #password ngModel name="password" placeholder="Password"  required>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Please fill out this field .</div>                    
                     </div>
                       <div class="form-group text-center">
                         <button type="button" class="btn btn-secondary center-block  mr-5 " data-dismiss="modal"><span class="fa fa-times"></span> Cancel</button>
