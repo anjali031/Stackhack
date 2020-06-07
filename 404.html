@@ -11,8 +11,63 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+.cssload-container {
+	width: 100%;
+	height: 100%;
+  text-align: center;
+  margin-top: 200px;
+  margin-bottom: auto;
+}
+
+.cssload-speeding-wheel {
+	width: 100px;
+	height: 100px;
+	margin: auto auto;
+  border: 3px solid rgb(22,157,177);
+	border-radius: 50%;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	animation: cssload-spin 575ms infinite linear;
+		-o-animation: cssload-spin 575ms infinite linear;
+		-ms-animation: cssload-spin 575ms infinite linear;
+		-webkit-animation: cssload-spin 575ms infinite linear;
+		-moz-animation: cssload-spin 575ms infinite linear;
+}
+
+
+
+
+@keyframes cssload-spin {
+	100%{ transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-o-keyframes cssload-spin {
+	100%{ -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-ms-keyframes cssload-spin {
+	100%{ -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-webkit-keyframes cssload-spin {
+	100%{ -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-moz-keyframes cssload-spin {
+	100%{ -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+   
+    </style>
 <link rel="stylesheet" href="styles.e6040cce180baacf0402.css"></head>
 <body>
-  <app-root></app-root>
-<script src="runtime-es2015.1eba213af0b233498d9d.js" type="module"></script><script src="runtime-es5.1eba213af0b233498d9d.js" nomodule defer></script><script src="polyfills-es5.dbd43042a7cf47dc578f.js" nomodule defer></script><script src="polyfills-es2015.6daee520f35267e9e80c.js" type="module"></script><script src="main-es2015.9f7b221d7815b55b5882.js" type="module"></script><script src="main-es5.9f7b221d7815b55b5882.js" nomodule defer></script></body>
+  <app-root>
+    <div class="cssload-container">
+      <div class="cssload-speeding-wheel"></div>
+    </div>
+    <center style="margin-top:2rem;">
+      <h1 style="color: #169db1;"> Todo App</h1>
+    </center>
+  </app-root>
+<script src="runtime-es2015.1eba213af0b233498d9d.js" type="module"></script><script src="runtime-es5.1eba213af0b233498d9d.js" nomodule defer></script><script src="polyfills-es5.dbd43042a7cf47dc578f.js" nomodule defer></script><script src="polyfills-es2015.6daee520f35267e9e80c.js" type="module"></script><script src="main-es2015.3b2498c825d0f56f1372.js" type="module"></script><script src="main-es5.3b2498c825d0f56f1372.js" nomodule defer></script></body>
 </html>
