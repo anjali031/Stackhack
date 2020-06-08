@@ -62,24 +62,19 @@ export class ToDoReadComponent implements OnInit {
     }
   }
   use(index) {
-    console.log(index);
     this.i = index;
     this.print();
   }
 
   archive(value) {
     this.SpinnerService.show();
-    console.log(value);
     this.userService.archiveid = value;
-    console.log(this.userService.archiveid);
     this.userService.Archive().subscribe(data => {
-      console.log( data);
       this.SpinnerService.hide();
 
       window.location.reload();
     },
     err => {
-      console.log(err.message);
       this.SpinnerService.hide();
       }
     );
@@ -91,13 +86,11 @@ export class ToDoReadComponent implements OnInit {
     if (localStorage.getItem('token')) {
       this.SpinnerService.show();
       this.userService.filter().subscribe(data => {
-        console.log('filter', data);
         this.data = data;
         this.SpinnerService.hide();
       },
       err => {
         this.SpinnerService.hide();
-        console.log(err.message);
         }
       );
     }
@@ -114,13 +107,11 @@ export class ToDoReadComponent implements OnInit {
     if (localStorage.getItem('token')) {
       this.SpinnerService.show();
       this.userService.Archiveread().subscribe(data => {
-        console.log('Archeve', data);
         this.archivedata = data;
         this.SpinnerService.hide();
 
       },
       err => {
-        console.log(err.message);
         this.SpinnerService.hide();
         }
       );
@@ -129,17 +120,13 @@ export class ToDoReadComponent implements OnInit {
   }
   unArchive(value) {
     this.SpinnerService.show();
-    console.log(value);
     this.userService.Unarchiveid = value;
-    console.log(this.userService.Unarchiveid);
     this.userService.Unarchive().subscribe(data => {
-      console.log( data);
       this.SpinnerService.hide();
 
       window.location.reload();
     },
     err => {
-      console.log(err.message);
       this.SpinnerService.hide();
       }
     );
@@ -154,18 +141,12 @@ export class ToDoReadComponent implements OnInit {
     this.userService.label = (document.getElementById('filterlabel') as HTMLInputElement).value;
     this.userService.color = (document.getElementById('filtercolor') as HTMLInputElement).value;
 
-    console.log(this.userService.status);
-    console.log(this.userService.search);
-    console.log(this.userService.label);
-    console.log(this.userService.color);
     this.SpinnerService.show();
     this.userService.filter().subscribe(data => {
-      console.log('filter ' , data);
       this.data = data;
       this.SpinnerService.hide();
     },
     err => {
-      console.log(err.message);
       this.SpinnerService.hide();
       }
     );
@@ -240,16 +221,13 @@ export class ToDoReadComponent implements OnInit {
   }
   delete(value) {
     this.SpinnerService.show();
-    console.log(value);
     this.userService.deleteid = value;
     this.userService.deletebyid().subscribe((data: any) => {
-      console.log(data);
       this.SpinnerService.hide();
 
       window.location.reload();
     },
     err => {
-      console.log(err.message);
       this.SpinnerService.hide();
       }
     );
@@ -272,10 +250,8 @@ export class ToDoReadComponent implements OnInit {
     // tslint:disable-next-line: max-line-length
     if ((document.getElementById('password') as HTMLInputElement).value !== (document.getElementById('confirm_password')as HTMLInputElement).value) {
       this.passwordMatch = 'Unmatched';
-      console.log(this.passwordMatch);
     } else {
       this.passwordMatch = 'Matched';
-      console.log(this.passwordMatch);
     }
   }
    // signup submit form
@@ -287,28 +263,21 @@ export class ToDoReadComponent implements OnInit {
       this.userService.asJeweler(form.value)
       .subscribe((data: any) => {
         if (data.response === 201) {
-          console.log(data);
           this.condition1 = false;
           this.signupSuccess = data;
           this.resetForm1();
           this.SpinnerService.hide();
-
-         // window.location.reload();
-          //  this.router.navigate(['/login']);
         } else {
-          console.log(data);
           this.SpinnerService.hide();
 
           this.signuperror = data;
         }
       },
       err => {
-        console.log(err.message);
         this.SpinnerService.hide();
          }
       );
     } else {
-      console.log(this.passwordMatch);
     }
 
   }
@@ -321,12 +290,10 @@ export class ToDoReadComponent implements OnInit {
       if (data.response === 200 ) {
         localStorage.setItem('token' , data.data.token );
         this.condition = false;
-        console.log(data);
-        window.location.reload();
+        window.location.reload(); // Stackhack1.0
         this.SpinnerService.hide();
       } else {
         this.Loginerror = data;
-        console.log(data);
         this.SpinnerService.hide();
       }
    },
@@ -342,19 +309,16 @@ export class ToDoReadComponent implements OnInit {
     this.userService.update(form.value)
     .subscribe((data: any) => {
       if (data.status === 200) {
-        console.log(data);
         this.resetForm();
         window.location.reload();
         this.SpinnerService.hide();
 
       } else {
-        console.log(data);
         this.updateerror = data;
         this.SpinnerService.hide();
       }
     },
     err => {
-      console.log(err.message);
       this.SpinnerService.hide();
       }
     );
@@ -365,20 +329,17 @@ export class ToDoReadComponent implements OnInit {
     this.userService.create(form.value)
     .subscribe((data: any) => {
       if (data.status === 200) {
-        console.log(data);
         this.resetForm2();
         window.location.reload();
         this.SpinnerService.hide();
 
       } else {
-        console.log(data);
         this.createerror = data;
 
         this.SpinnerService.hide();
       }
     },
     err => {
-      console.log(err.message);
       this.SpinnerService.hide();
       }
     );
@@ -391,4 +352,4 @@ export class ToDoReadComponent implements OnInit {
     this.SpinnerService.hide();
 
   }
-}
+} // Stackhack1.0 , password:123123
